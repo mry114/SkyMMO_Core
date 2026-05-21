@@ -1,0 +1,4 @@
+name: SkyMMO_Core
+version: '${version}'
+main: com.github.mry114.skymmo_core.SkyMMO_Core
+api-version: '1.20'

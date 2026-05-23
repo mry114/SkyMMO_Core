@@ -3,21 +3,23 @@ package com.github.mry114.skymmo_core.core.item.equipment;
 import com.github.mry114.skymmo_core.api.Rarity;
 import com.github.mry114.skymmo_core.api.Status;
 import com.github.mry114.skymmo_core.api.item.IEquipmentItem;
+import com.github.mry114.skymmo_core.util.StatusContainer;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 
+import java.util.List;
 import java.util.Map;
 
 public abstract class ArmorItem implements IEquipmentItem {
     private final int id;
-    private final String name;
+    private final Component name;
     private final Rarity rarity;
     private final Material material;
 
-    protected abstract Map<Status, Double>  getMainStats();
-    protected abstract Map<Status, Double>  getSecondaryStats();
+    protected abstract StatusContainer getMainStats();
+    protected abstract StatusContainer  getSecondaryStats();
 
-    protected ArmorItem(int id, String name, Rarity rarity, Material material) {
+    protected ArmorItem(int id, Component name, Rarity rarity, Material material) {
         this.id = id;
         this.name = name;
         this.rarity = rarity;
@@ -25,12 +27,12 @@ public abstract class ArmorItem implements IEquipmentItem {
     }
 
     @Override
-    public Map<Status, Double> getAllStats() {
-        return null;
+    public StatusContainer getAllStats() {
+        return getMainStats().marge(getSecondaryStats());
     }
 
     @Override
-    public Component getLore() {
+    public List<Component> getLore() {
         return null;
     }
 
@@ -40,7 +42,7 @@ public abstract class ArmorItem implements IEquipmentItem {
     }
 
     @Override
-    public String getName() {
+    public Component getName() {
         return name;
     }
 

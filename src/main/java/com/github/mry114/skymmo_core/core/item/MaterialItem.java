@@ -2,16 +2,17 @@ package com.github.mry114.skymmo_core.core.item;
 
 import com.github.mry114.skymmo_core.api.Rarity;
 import com.github.mry114.skymmo_core.api.item.ICustomItem;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 public abstract class MaterialItem implements ICustomItem {
     private int id;
-    private String name;
+    private Component name;
     private Rarity rarity;
     private Material material;
 
-    public MaterialItem(int id, String name, Rarity rarity, Material material) {
+    public MaterialItem(int id, Component name, Rarity rarity, Material material) {
         this.id = id;
         this.name = name;
         this.rarity = rarity;
@@ -24,7 +25,7 @@ public abstract class MaterialItem implements ICustomItem {
     }
 
     @Override
-    public String getName() {
+    public Component getName() {
         return this.name;
     }
 

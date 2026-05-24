@@ -6,13 +6,11 @@ import java.util.Collections;
 import java.util.EnumMap;
 import java.util.Map;
 
-public final class StatusContainer {
-    private final Map<Status, Double> stats;
-
+public record StatusContainer(Map<Status, Double> stats) {
     public static final StatusContainer EMPTY = new StatusContainer(Map.of());
 
-    private StatusContainer(Map<Status, Double> stats) {
-        this.stats = Collections.unmodifiableMap(new EnumMap<>(stats));
+    public StatusContainer {
+        stats = Collections.unmodifiableMap(new EnumMap<>(stats));
     }
 
     public double get(Status type) {

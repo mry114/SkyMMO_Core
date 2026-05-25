@@ -2,18 +2,18 @@ package com.github.mry114.skymmo_core.api.item;
 
 import com.github.mry114.skymmo_core.util.StatusContainer;
 import net.kyori.adventure.text.Component;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
-import java.util.Map;
 
 public interface IEquipmentItem extends ICustomItem {
     /**
      * アイテムのすべてのステータスを集計した結果を返します。
      */
-    StatusContainer getAllStats();
+    @NotNull StatusContainer getAllStats();
 
     /**
-     * アイテムのLoreを返します
+     * アイテムの説明文となるLoreを返します。
      */
-    List<Component> getLore();
+    @NotNull List<Component> getLore();
 }

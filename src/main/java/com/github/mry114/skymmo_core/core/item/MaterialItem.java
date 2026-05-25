@@ -4,7 +4,7 @@ import com.github.mry114.skymmo_core.api.Rarity;
 import com.github.mry114.skymmo_core.api.item.ICustomItem;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
-import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 public abstract class MaterialItem implements ICustomItem {
     private int id;
@@ -25,12 +25,12 @@ public abstract class MaterialItem implements ICustomItem {
     }
 
     @Override
-    public Component getName() {
+    public @NotNull Component getName() {
         return this.name;
     }
 
     @Override
-    public Rarity getRarity() {
+    public @NotNull Rarity getRarity() {
         return rarity;
     }
 }

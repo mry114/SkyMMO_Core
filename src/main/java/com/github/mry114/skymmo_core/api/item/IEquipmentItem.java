@@ -15,5 +15,5 @@ public interface IEquipmentItem extends ICustomItem {
     /**
      * アイテムの説明文となるLoreを返します。
      */
-    @NotNull List<Component> getLore();
+    @NotNull ILoreModule[] getLore();
 }

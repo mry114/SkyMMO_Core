@@ -3,6 +3,7 @@ package com.github.mry114.skymmo_core.core.item.equipment;
 import com.github.mry114.skymmo_core.api.Rarity;
 import com.github.mry114.skymmo_core.api.item.Equipment.IEquipmentItem;
 import com.github.mry114.skymmo_core.api.item.Equipment.capa.IEquipmentMainStatus;
+import com.github.mry114.skymmo_core.api.item.IItemProcessorModule;
 import com.github.mry114.skymmo_core.util.StatusContainer;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
@@ -61,5 +62,12 @@ public abstract class ArmorItem implements IEquipmentItem, IEquipmentMainStatus 
     @Override
     public @NotNull Rarity getRarity() {
         return rarity;
+    }
+
+    @Override
+    public @NotNull List<IItemProcessorModule> getProcessorModule() {
+        return List.of(
+
+        );
     }
 }

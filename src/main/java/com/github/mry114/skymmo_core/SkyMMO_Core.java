@@ -4,6 +4,12 @@ import com.github.mry114.skymmo_core.listener.EventListener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class SkyMMO_Core extends JavaPlugin {
+    private static SkyMMO_Core instance;
+
+    @Override
+    public void onLoad() {
+        instance = this;
+    }
 
     @Override
     public void onEnable() {
@@ -17,6 +23,6 @@ public final class SkyMMO_Core extends JavaPlugin {
     }
 
     public static SkyMMO_Core getInstance() {
-        return new SkyMMO_Core();
+        return instance;
     }
 }

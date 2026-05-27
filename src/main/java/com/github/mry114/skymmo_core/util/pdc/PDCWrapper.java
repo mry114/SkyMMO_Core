@@ -1,6 +1,7 @@
 package com.github.mry114.skymmo_core.util.pdc;
 
 import com.github.mry114.skymmo_core.data.PDCStatus;
+import com.github.mry114.skymmo_core.data.pdc.PDCKey;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 
@@ -11,11 +12,11 @@ public class PDCWrapper {
         this.persistentDataContainer = meta.getPersistentDataContainer();
     }
 
-    public Object get(PDCStatus status) {
-        return persistentDataContainer.get(status.getKey(), status.getDataType());
+    public <P, C> C get(PDCKey<P, C> status) {
+        return persistentDataContainer.get(status.key(), status.type());
     }
 
-    public void set(PDCStatus status, Object value) {
-        persistentDataContainer.set(status.getKey(), status.getDataType(), value);
+    public <P, C> void set(PDCKey<P, C> status, C value) {
+        persistentDataContainer.set(status.key(), status.type(), value);
     }
 }

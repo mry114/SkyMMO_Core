@@ -5,6 +5,8 @@ import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
+
 public interface ICustomItem {
     /**
      * アイテムのIdを返します。
@@ -25,4 +27,9 @@ public interface ICustomItem {
      * アイテムのRarityを返します。
      */
     @NotNull Rarity getRarity();
+
+    /**
+     * アイテムを生成するときに、ItemStackに固める時の処理にどのProcessorを要求するかを返します。
+     */
+    @NotNull List<IItemProcessorModule> getProcessorModule();
 }

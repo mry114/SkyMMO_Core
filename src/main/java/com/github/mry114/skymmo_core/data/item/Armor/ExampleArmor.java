@@ -7,9 +7,13 @@ import com.github.mry114.skymmo_core.util.StatusContainer;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 
+import java.util.List;
+
 public class ExampleArmor extends ArmorItem {
-    protected ExampleArmor(int id, String name, Rarity rarity, Material material) {
-        super(200_001, Component.text("テストアーマー"), Rarity.COMMON, Material.IRON_CHESTPLATE);
+    public ExampleArmor() {
+        super(200_001, Component.text("テストアーマー"), Rarity.COMMON, Material.IRON_CHESTPLATE, List.of(
+                Component.text("作成例です")
+        ));
     }
 
     @Override

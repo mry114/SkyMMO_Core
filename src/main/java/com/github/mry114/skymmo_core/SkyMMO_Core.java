@@ -3,8 +3,6 @@ package com.github.mry114.skymmo_core;
 import com.github.mry114.skymmo_core.listener.EventListener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import javax.inject.Singleton;
-
 public final class SkyMMO_Core extends JavaPlugin {
 
     @Override

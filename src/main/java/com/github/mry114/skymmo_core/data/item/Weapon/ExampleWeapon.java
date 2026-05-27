@@ -7,9 +7,13 @@ import com.github.mry114.skymmo_core.util.StatusContainer;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 
+import java.util.List;
+
 public class ExampleWeapon extends WeaponItem {
-    protected ExampleWeapon(int id, String name, Rarity rarity, Material material) {
-        super(100_001, Component.text("テストウェポン"), Rarity.COMMON, Material.IRON_SWORD);
+    public ExampleWeapon() {
+        super(100_001, Component.text("テストウェポン"), Rarity.COMMON, Material.IRON_SWORD, List.of(
+                Component.text("作成例です")
+        ));
     }
 
     @Override

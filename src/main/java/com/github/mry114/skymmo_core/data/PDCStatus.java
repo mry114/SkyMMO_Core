@@ -5,8 +5,9 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.persistence.PersistentDataType;
 
 public enum PDCStatus {
+    CUSTOM_ITEM(PersistentDataType.BOOLEAN, "custom_item"),
     ITEM_ID(PersistentDataType.INTEGER, "id"),
-    RARITY(PersistentDataType.STRING, "rarity")
+    RARITY(PersistentDataType.STRING, "rarity"),
     ;
 
     private final PersistentDataType<?, ?> dataType;

@@ -1,4 +1,4 @@
-package com.github.mry114.skymmo_core.api.item.Equipment;
+package com.github.mry114.skymmo_core.api.item.equipment;
 
 import com.github.mry114.skymmo_core.api.item.ICustomItem;
 import com.github.mry114.skymmo_core.util.StatusContainer;

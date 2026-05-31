@@ -4,9 +4,27 @@ import com.github.mry114.skymmo_core.api.Rarity;
 import com.github.mry114.skymmo_core.core.item.MaterialItem;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
+import org.jetbrains.annotations.NotNull;
 
 public class ExampleItem extends MaterialItem {
-    public ExampleItem() {
-        super(1, Component.text("テストアイテム"), Rarity.COMMON, Material.IRON_INGOT);
+
+    @Override
+    public int getId() {
+        return 1;
+    }
+
+    @Override
+    public @NotNull Component getName() {
+        return Component.text("テストアイテム");
+    }
+
+    @Override
+    public @NotNull Material getMaterial() {
+        return Material.IRON_INGOT;
+    }
+
+    @Override
+    public @NotNull Rarity getRarity() {
+        return Rarity.COMMON;
     }
 }

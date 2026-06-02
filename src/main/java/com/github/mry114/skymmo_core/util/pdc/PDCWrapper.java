@@ -1,6 +1,5 @@
 package com.github.mry114.skymmo_core.util.pdc;
 
-import com.github.mry114.skymmo_core.data.PDCStatus;
 import com.github.mry114.skymmo_core.data.pdc.PDCKey;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;

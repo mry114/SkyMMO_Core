@@ -1,12 +1,10 @@
-package com.github.mry114.skymmo_core.data.item.Armor;
+package com.github.mry114.skymmo_core.data.item.armor;
 
-import com.github.mry114.skymmo_core.api.Rarity;
-import com.github.mry114.skymmo_core.api.Status;
-import com.github.mry114.skymmo_core.api.item.can.IItemSkill;
-import com.github.mry114.skymmo_core.api.item.can.IUseRequirement;
+import com.github.mry114.skymmo_core.data.type.Rarity;
+import com.github.mry114.skymmo_core.data.type.Status;
 import com.github.mry114.skymmo_core.api.item.can.ItemSkill;
 import com.github.mry114.skymmo_core.api.item.can.UseRequirement;
-import com.github.mry114.skymmo_core.core.item.equipment.ArmorItem;
+import com.github.mry114.skymmo_core.core.item.type.equipment.ArmorItem;
 import com.github.mry114.skymmo_core.util.StatusContainer;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
@@ -52,17 +50,17 @@ public class ExampleArmor extends ArmorItem {
     }
 
     @Override
-    public @NotNull StatusContainer getMainStatus() {
+    public @NotNull StatusContainer getBaseStatus() {
         return new StatusContainer.Builder()
                 .add(Status.DEFENCE, 10.0)
                 .build();
     }
 
     @Override
-    public @NotNull StatusContainer getBaseStatus() {
+    public @NotNull StatusContainer getMainStatus() {
         return new StatusContainer.Builder()
-                .add(Status.DEFENCE_PERCENT, 20.0)
-                .add(Status.MOVE_SPEED, 10.0)
+                .add(Status.DEFENCE_PERCENT, 0.2)
+                .add(Status.MOVE_SPEED, 0.1)
                 .build();
     }
 
@@ -90,6 +88,6 @@ public class ExampleArmor extends ArmorItem {
 
     @Override
     public @NotNull Rarity getRarity() {
-        return Rarity.COMMON;
+        return Rarity.LEGENDARY;
     }
 }

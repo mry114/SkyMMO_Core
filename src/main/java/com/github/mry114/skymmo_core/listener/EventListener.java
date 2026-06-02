@@ -13,10 +13,22 @@ public class EventListener implements Listener {
     private void onPlayerChat(AsyncChatEvent event) {
         String message = PlainTextComponentSerializer.plainText().serialize(event.message());
 
-        if (message.equals("[1]")) {
-            Player player = event.getPlayer();
+        switch (message) {
+            case "[1]" -> {
+                Player player = event.getPlayer();
 
-            player.getInventory().setItem(0, new CustomItemFactory(ItemRegistry.EXAMPLE_ITEM).build());
+                player.getInventory().setItem(0, new CustomItemFactory(ItemRegistry.EXAMPLE_ITEM).create());
+            }
+            case "[2]" -> {
+                Player player = event.getPlayer();
+
+                player.getInventory().setItem(0, new CustomItemFactory(ItemRegistry.EXAMPLE_WEAPON).create());
+            }
+            case "[3]" -> {
+                Player player = event.getPlayer();
+
+                player.getInventory().setItem(0, new CustomItemFactory(ItemRegistry.EXAMPLE_ARMOR).create());
+            }
         }
     }
 }

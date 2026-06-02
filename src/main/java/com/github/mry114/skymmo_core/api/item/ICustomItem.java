@@ -1,12 +1,11 @@
 package com.github.mry114.skymmo_core.api.item;
 
-import com.github.mry114.skymmo_core.api.Rarity;
-import com.github.mry114.skymmo_core.api.item.can.IItemSkill;
-import com.github.mry114.skymmo_core.api.item.can.IUseRequirement;
+import com.github.mry114.skymmo_core.data.type.ItemType;
+import com.github.mry114.skymmo_core.data.type.Rarity;
+import com.github.mry114.skymmo_core.api.module.IItemModule;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -32,17 +31,12 @@ public interface ICustomItem {
     @NotNull Rarity getRarity();
 
     /**
-     * アイテムの使用条件の定義を返します。
+     * アイテムのItemTypeを返します。
      */
-    @Nullable IUseRequirement getRequirement();
-
-    /**
-     * アイテムのスキルの定義を返します。
-     */
-    @Nullable IItemSkill getItemSkill();
+    @NotNull ItemType getItemType();
 
     /**
      * アイテムを生成するときに、ItemStackに固める時の処理にどのProcessorを要求するかを返します。
      */
-    @NotNull List<IItemProcessorModule> getProcessorModule();
+    @NotNull List<IItemModule> getProcessorModule();
 }

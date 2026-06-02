@@ -1,6 +1,6 @@
 package com.github.mry114.skymmo_core.util;
 
-import com.github.mry114.skymmo_core.api.Status;
+import com.github.mry114.skymmo_core.data.type.Status;
 
 import java.util.Collections;
 import java.util.EnumMap;
@@ -10,7 +10,9 @@ public record StatusContainer(Map<Status, Double> stats) {
     public static final StatusContainer EMPTY = new StatusContainer(Map.of());
 
     public StatusContainer {
-        stats = Collections.unmodifiableMap(new EnumMap<>(stats));
+        stats = Collections.unmodifiableMap(
+                stats.isEmpty() ? new EnumMap<>(Status.class) : new EnumMap<>(stats)
+        );
     }
 
     public double get(Status type) {

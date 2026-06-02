@@ -1,4 +1,4 @@
-package com.github.mry114.skymmo_core.api;
+package com.github.mry114.skymmo_core.data.type;
 
 import net.kyori.adventure.text.format.TextColor;
 

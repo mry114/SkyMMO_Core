@@ -1,11 +1,15 @@
-package com.github.mry114.skymmo_core.core.item.equipment;
+package com.github.mry114.skymmo_core.core.item.type.equipment;
 
 import com.github.mry114.skymmo_core.api.item.can.IItemSkill;
 import com.github.mry114.skymmo_core.api.item.can.IUseRequirement;
 import com.github.mry114.skymmo_core.api.item.can.ItemSkill;
 import com.github.mry114.skymmo_core.api.item.can.UseRequirement;
 import com.github.mry114.skymmo_core.api.item.equipment.capa.IEquipmentMainStatus;
-import com.github.mry114.skymmo_core.api.item.IItemProcessorModule;
+import com.github.mry114.skymmo_core.api.module.IItemModule;
+import com.github.mry114.skymmo_core.data.context.equipment.ItemBaseStatusModule;
+import com.github.mry114.skymmo_core.data.context.main.name.ItemNameModule;
+import com.github.mry114.skymmo_core.data.context.main.rarity.ItemRarityModule;
+import com.github.mry114.skymmo_core.data.type.ItemType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -34,9 +38,16 @@ public abstract class ArmorItem implements IEquipmentMainStatus {
     }
 
     @Override
-    public @NotNull List<IItemProcessorModule> getProcessorModule() {
-        return List.of(
+    public @NotNull ItemType getItemType() {
+        return ItemType.ARMOR;
+    }
 
+    @Override
+    public @NotNull List<IItemModule> getProcessorModule() {
+        return List.of(
+                ItemNameModule.getInstance(),
+                ItemBaseStatusModule.getInstance(),
+                ItemRarityModule.getInstance()
         );
     }
 }

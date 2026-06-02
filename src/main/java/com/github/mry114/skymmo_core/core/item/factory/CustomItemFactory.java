@@ -1,44 +1,45 @@
 package com.github.mry114.skymmo_core.core.item.factory;
 
-import com.github.mry114.skymmo_core.api.attribute.IAttribute;
 import com.github.mry114.skymmo_core.api.item.ICustomItem;
-import com.github.mry114.skymmo_core.core.lore.renderer.RarityRenderer;
-import com.github.mry114.skymmo_core.data.PDCStatus;
-import com.github.mry114.skymmo_core.util.pdc.PDCWrapper;
+import com.github.mry114.skymmo_core.api.module.IItemModule;
+import com.github.mry114.skymmo_core.core.context.ItemContext;
+import com.github.mry114.skymmo_core.core.context.ItemGeneratorContext;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
+/**
+ * ItemStackを作る際、Moduleを順番通りに実行します
+ * CalculatorはProcessorより前に実行されるため、ProcessorはCalculatorの結果を利用できます
+ * 例えば、ModuleAとModuleBがあった場合、ModuleAのCalculatorとProcessorが先に実行され、その後ModuleBのCalculatorとProcessorが実行されます
+ */
 public class CustomItemFactory {
-    /*
-    * 今後モジュールを使用した方法に切り替える想定 詳しくはShardCoreを参照
-     */
     ICustomItem customItem;
-    IAttribute attribute;
 
     public CustomItemFactory(ICustomItem customItem) {
         this.customItem = customItem;
     }
 
-    public CustomItemFactory setAttribute(IAttribute attribute) {
-        this.attribute = attribute;
-        return this;
+    public ItemStack create() {
+        ItemStack item = new ItemStack(customItem.getMaterial());
+        ItemContext context = new ItemContext(item);
+
+        for (IItemModule module : customItem.getProcessorModule()) {
+            // Calculator を実行
+            if (module.getItemCalculator() != null) {
+                module.getItemCalculator().calculate(customItem, context);
+            }
+        }
+
+        for (IItemModule module : customItem.getProcessorModule()) {
+            // Processor を実行
+            if (module.getItemProcessor() != null) {
+                module.getItemProcessor().process(customItem, context);
+            }
+        }
+
+        return item;
     }
 
-    public ItemStack build() {
-        ItemStack item = new ItemStack(customItem.getMaterial());
-        ItemMeta meta = item.getItemMeta();
-
-        meta.setCustomModelData(customItem.getId());
-        meta.displayName(customItem.getName().color(customItem.getRarity().getColor()));
-
-        PDCWrapper pdcWrapper = new PDCWrapper(meta);
-        pdcWrapper.set(PDCStatus.CUSTOM_ITEM, true);
-        pdcWrapper.set(PDCStatus.ITEM_ID, customItem.getId());
-        pdcWrapper.set(PDCStatus.RARITY, customItem.getRarity().name());
-
-        meta.lore(new RarityRenderer(customItem.getRarity()).build());
-
-        item.setItemMeta(meta);
-        return item;
+    public ItemStack update() {
+        return null;
     }
 }

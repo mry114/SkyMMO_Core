@@ -52,14 +52,26 @@ public class ItemNameModule implements IItemModule {
 
         @Override
         public void process(ICustomItem customItem, IItemProcessorContext context) {
-            ItemMeta meta = context.getItemStack().getItemMeta();
-            meta.displayName((context.get(ItemAttributeModuleKeys.ITEM_ATTRIBUTE).getDisplayName())
-                    .append(Component.text(" "))
-                    .append(context.get(ItemNameModuleKeys.ITEM_NAME))
-                    .decorate(TextDecoration.BOLD)
-                    .decoration(TextDecoration.ITALIC, false)
-                    .color(context.get(ItemRarityModuleKeys.ITEM_RARITY).getColor()));
-            context.getItemStack().setItemMeta(meta);
+            ItemStack itemStack = context.getItemStack();
+            ItemMeta meta = itemStack.getItemMeta();
+            Component displayName;
+
+            if (context.get(ItemAttributeModuleKeys.ITEM_ATTRIBUTE) != null) {
+                displayName = context.get(ItemAttributeModuleKeys.ITEM_ATTRIBUTE).getDisplayName()
+                        .append(Component.text(" "))
+                        .append(context.get(ItemNameModuleKeys.ITEM_NAME))
+                        .decorate(TextDecoration.BOLD)
+                        .decoration(TextDecoration.ITALIC, false)
+                        .color(context.get(ItemRarityModuleKeys.ITEM_RARITY).getColor());
+            } else {
+                displayName = context.get(ItemNameModuleKeys.ITEM_NAME)
+                        .decorate(TextDecoration.BOLD)
+                        .decoration(TextDecoration.ITALIC, false)
+                        .color(context.get(ItemRarityModuleKeys.ITEM_RARITY).getColor());
+            }
+
+            meta.displayName(displayName);
+            itemStack.setItemMeta(meta);
         }
 
         @Override

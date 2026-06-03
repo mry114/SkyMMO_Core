@@ -8,6 +8,8 @@ import com.github.mry114.skymmo_core.core.context.ItemUpdaterContext;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+
 /**
  * ItemStackを作る際、Moduleを順番通りに実行します
  * CalculatorはProcessorより前に実行されるため、ProcessorはCalculatorの結果を利用できます
@@ -23,6 +25,7 @@ public class CustomItemFactory {
     public ItemStack create(@NotNull ItemGeneratorContext generator) {
         ItemStack item = new ItemStack(customItem.getMaterial());
         ItemContext context = new ItemContext(item);
+        context.getItemStack().lore(new ArrayList<>());
 
         for (IItemModule module : customItem.getProcessorModule()) {
             if (module.getItemCalculator() != null) {
@@ -42,6 +45,7 @@ public class CustomItemFactory {
     public ItemStack update(@NotNull ItemUpdaterContext updater, ItemStack item) {
 
         ItemContext context = new ItemContext(item);
+        context.getItemStack().lore(new ArrayList<>());
 
         for (IItemModule module : customItem.getProcessorModule()) {
             if (module.getItemReader() != null) {

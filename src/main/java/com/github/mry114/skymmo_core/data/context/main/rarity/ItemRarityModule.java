@@ -57,13 +57,14 @@ public class ItemRarityModule implements IItemModule {
 
         @Override
         public void process(ICustomItem customItem, IItemProcessorContext context) {
-            ItemMeta meta = context.getItemStack().getItemMeta();
+            List<Component> lore = new ArrayList<>();
+            lore.add(Component.text(context.get(ItemRarityModuleKeys.ITEM_RARITY).name() + " " + customItem.getItemType().name())
+                    .decorate(TextDecoration.BOLD)
+                    .decoration(TextDecoration.ITALIC, false)
+                    .color(context.get(ItemRarityModuleKeys.ITEM_RARITY).getColor()));
 
-            List<Component> lore = List.of(
-                    Component.text(context.get(ItemRarityModuleKeys.ITEM_RARITY).name() + " " + customItem.getItemType().name()).decorate(TextDecoration.BOLD).decoration(TextDecoration.ITALIC, false).color(context.get(ItemRarityModuleKeys.ITEM_RARITY).getColor() )
-            );
-
-            context.getLoreUtil().addAllLore(lore);
+            context.getItemStack().getItemMeta().lore().addAll(lore);
+            context.getItemStack().setItemMeta(context.getItemStack().getItemMeta());
         }
 
         @Override

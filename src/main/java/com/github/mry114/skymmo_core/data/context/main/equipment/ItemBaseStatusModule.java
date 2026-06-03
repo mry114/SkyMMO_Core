@@ -67,10 +67,9 @@ public class ItemBaseStatusModule implements IItemModule {
 
             List<Component> newLore = new ArrayList<>();
 
-            Component baseStatus = Component.text("[", TextColor.color(0xFFFF55)).decorate(TextDecoration.BOLD).decoration(TextDecoration.ITALIC, false)
+            newLore.add(Component.text("[", TextColor.color(0xFFFF55)).decorate(TextDecoration.BOLD).decoration(TextDecoration.ITALIC, false)
                     .append(Component.text(" Base Status ", TextColor.color(0xFFAA00)).decoration(TextDecoration.BOLD, false).decoration(TextDecoration.ITALIC, false))
-                    .append(Component.text("]", TextColor.color(0xFFFF55)).decorate(TextDecoration.BOLD).decoration(TextDecoration.ITALIC, false));
-            newLore.add(baseStatus);
+                    .append(Component.text("]", TextColor.color(0xFFFF55)).decorate(TextDecoration.BOLD).decoration(TextDecoration.ITALIC, false)));
 
             for (Status status : Status.values()) {
                 double value = context.get(ItemBaseStatusModuleKeys.ITEM_BASE_STATUS).get(status);
@@ -79,8 +78,8 @@ public class ItemBaseStatusModule implements IItemModule {
                 }
             }
             newLore.add(Component.empty());
-
-            context.getLoreUtil().addAllLore(newLore);
+            meta.lore().addAll(newLore);
+            context.getItemStack().setItemMeta(meta);
         }
 
         @Override

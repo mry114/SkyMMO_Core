@@ -9,9 +9,7 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.persistence.PersistentDataType;
 
 public class ItemRarityModuleKeys {
-    public static final ItemGeneratorContextKey<Rarity> GENERATOR_ITEM_RARITY = new ItemGeneratorContextKey<>("generator_item_rarity");
-
     public static final ItemContextKey<Rarity> ITEM_RARITY = new ItemContextKey<>("item_rarity");
 
-    PDCKey<String, String> RARITY = new PDCKey<>(PersistentDataType.STRING, new NamespacedKey(SkyMMO_Core.getInstance(), "rarity"));
+    PDCKey<String, String> PDC_RARITY = new PDCKey<>(PersistentDataType.STRING, new NamespacedKey(SkyMMO_Core.getInstance(), "pdc_rarity"));
 }

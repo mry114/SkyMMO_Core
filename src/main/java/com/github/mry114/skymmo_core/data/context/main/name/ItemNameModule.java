@@ -6,10 +6,12 @@ import com.github.mry114.skymmo_core.api.module.processor.IItemCalculator;
 import com.github.mry114.skymmo_core.api.module.processor.IItemProcessor;
 import com.github.mry114.skymmo_core.api.module.processor.IItemReader;
 import com.github.mry114.skymmo_core.core.context.*;
+import com.github.mry114.skymmo_core.data.context.attribute.ItemAttributeModuleKeys;
 import com.github.mry114.skymmo_core.data.context.main.MainModuleKeys;
 import com.github.mry114.skymmo_core.data.context.main.rarity.ItemRarityModuleKeys;
 import com.github.mry114.skymmo_core.registry.ItemRegistry;
 import com.github.mry114.skymmo_core.util.pdc.PDCWrapper;
+import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -44,14 +46,19 @@ public class ItemNameModule implements IItemModule {
 
     private static class ItemNameLogic implements IItemReader, IItemCalculator, IItemProcessor {
         @Override
-        public void calculate(ICustomItem customItem, IItemCalculatorContext context) {
+        public void calculate(ICustomItem customItem, ItemGeneratorContext generator, IItemCalculatorContext context) {
             context.put(ItemNameModuleKeys.ITEM_NAME, customItem.getName());
         }
 
         @Override
         public void process(ICustomItem customItem, IItemProcessorContext context) {
             ItemMeta meta = context.getItemStack().getItemMeta();
-            meta.displayName(context.get(ItemNameModuleKeys.ITEM_NAME).decorate(TextDecoration.BOLD).decoration(TextDecoration.ITALIC, false).color(context.get(ItemRarityModuleKeys.ITEM_RARITY).getColor()));
+            meta.displayName((context.get(ItemAttributeModuleKeys.ITEM_ATTRIBUTE).getDisplayName())
+                    .append(Component.text(" "))
+                    .append(context.get(ItemNameModuleKeys.ITEM_NAME))
+                    .decorate(TextDecoration.BOLD)
+                    .decoration(TextDecoration.ITALIC, false)
+                    .color(context.get(ItemRarityModuleKeys.ITEM_RARITY).getColor()));
             context.getItemStack().setItemMeta(meta);
         }
 

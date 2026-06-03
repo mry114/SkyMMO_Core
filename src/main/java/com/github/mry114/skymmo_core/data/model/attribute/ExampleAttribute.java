@@ -1,4 +1,4 @@
-package com.github.mry114.skymmo_core.data.attribute;
+package com.github.mry114.skymmo_core.data.model.attribute;
 
 import com.github.mry114.skymmo_core.data.type.Status;
 import com.github.mry114.skymmo_core.core.attribute.EquipmentAttribute;

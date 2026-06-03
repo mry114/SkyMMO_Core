@@ -1,4 +1,4 @@
-package com.github.mry114.skymmo_core.data.item.material;
+package com.github.mry114.skymmo_core.data.model.item.material;
 
 import com.github.mry114.skymmo_core.data.type.Rarity;
 import com.github.mry114.skymmo_core.core.item.type.MaterialItem;

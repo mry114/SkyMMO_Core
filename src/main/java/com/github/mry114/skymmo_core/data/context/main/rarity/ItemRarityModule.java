@@ -8,8 +8,8 @@ import com.github.mry114.skymmo_core.api.module.processor.IItemReader;
 import com.github.mry114.skymmo_core.core.context.IItemCalculatorContext;
 import com.github.mry114.skymmo_core.core.context.IItemProcessorContext;
 import com.github.mry114.skymmo_core.core.context.IItemReaderContext;
+import com.github.mry114.skymmo_core.core.context.ItemGeneratorContext;
 import com.github.mry114.skymmo_core.data.context.main.MainModuleKeys;
-import com.github.mry114.skymmo_core.data.context.main.name.ItemNameModuleKeys;
 import com.github.mry114.skymmo_core.registry.ItemRegistry;
 import com.github.mry114.skymmo_core.util.pdc.PDCWrapper;
 import net.kyori.adventure.text.Component;
@@ -51,7 +51,7 @@ public class ItemRarityModule implements IItemModule {
     private static class ItemRarityLogic implements IItemReader, IItemCalculator, IItemProcessor {
 
         @Override
-        public void calculate(ICustomItem customItem, IItemCalculatorContext context) {
+        public void calculate(ICustomItem customItem, ItemGeneratorContext generator, IItemCalculatorContext context) {
             context.put(ItemRarityModuleKeys.ITEM_RARITY, customItem.getRarity());
         }
 
@@ -62,15 +62,8 @@ public class ItemRarityModule implements IItemModule {
             List<Component> lore = List.of(
                     Component.text(context.get(ItemRarityModuleKeys.ITEM_RARITY).name() + " " + customItem.getItemType().name()).decorate(TextDecoration.BOLD).decoration(TextDecoration.ITALIC, false).color(context.get(ItemRarityModuleKeys.ITEM_RARITY).getColor() )
             );
-            List<Component> currentLore = meta.lore();
-            List<Component> combinedLore = new ArrayList<>();
 
-            if (currentLore != null) {
-                combinedLore.addAll(currentLore);
-            }
-            combinedLore.addAll(lore);
-            meta.lore(combinedLore);
-            context.getItemStack().setItemMeta(meta);
+            context.getLoreUtil().addAllLore(lore);
         }
 
         @Override

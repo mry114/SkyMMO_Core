@@ -6,7 +6,8 @@ import com.github.mry114.skymmo_core.api.item.can.ItemSkill;
 import com.github.mry114.skymmo_core.api.item.can.UseRequirement;
 import com.github.mry114.skymmo_core.api.item.equipment.capa.IEquipmentMainStatus;
 import com.github.mry114.skymmo_core.api.module.IItemModule;
-import com.github.mry114.skymmo_core.data.context.equipment.ItemBaseStatusModule;
+import com.github.mry114.skymmo_core.data.context.attribute.ItemAttributeModule;
+import com.github.mry114.skymmo_core.data.context.main.equipment.ItemBaseStatusModule;
 import com.github.mry114.skymmo_core.data.context.main.name.ItemNameModule;
 import com.github.mry114.skymmo_core.data.context.main.rarity.ItemRarityModule;
 import com.github.mry114.skymmo_core.data.type.ItemType;
@@ -44,6 +45,7 @@ public abstract class WeaponItem implements IEquipmentMainStatus {
     @Override
     public @NotNull List<IItemModule> getProcessorModule() {
         return List.of(
+                ItemAttributeModule.getInstance(),
                 ItemNameModule.getInstance(),
                 ItemBaseStatusModule.getInstance(),
                 ItemRarityModule.getInstance()

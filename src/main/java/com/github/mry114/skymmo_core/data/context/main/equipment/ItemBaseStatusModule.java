@@ -1,4 +1,4 @@
-package com.github.mry114.skymmo_core.data.context.equipment;
+package com.github.mry114.skymmo_core.data.context.main.equipment;
 
 import com.github.mry114.skymmo_core.api.item.ICustomItem;
 import com.github.mry114.skymmo_core.api.item.equipment.IEquipmentItem;
@@ -9,7 +9,11 @@ import com.github.mry114.skymmo_core.api.module.processor.IItemReader;
 import com.github.mry114.skymmo_core.core.context.IItemCalculatorContext;
 import com.github.mry114.skymmo_core.core.context.IItemProcessorContext;
 import com.github.mry114.skymmo_core.core.context.IItemReaderContext;
+import com.github.mry114.skymmo_core.core.context.ItemGeneratorContext;
+import com.github.mry114.skymmo_core.data.context.main.MainModuleKeys;
+import com.github.mry114.skymmo_core.data.context.main.name.ItemNameModuleKeys;
 import com.github.mry114.skymmo_core.data.type.Status;
+import com.github.mry114.skymmo_core.registry.ItemRegistry;
 import com.github.mry114.skymmo_core.util.pdc.PDCWrapper;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
@@ -50,7 +54,7 @@ public class ItemBaseStatusModule implements IItemModule {
 
     private static class ItemBaseStatusLogic implements IItemReader, IItemCalculator, IItemProcessor {
         @Override
-        public void calculate(ICustomItem customItem, IItemCalculatorContext context) {
+        public void calculate(ICustomItem customItem, ItemGeneratorContext generator, IItemCalculatorContext context) {
             if (customItem instanceof IEquipmentItem equipment) {
                 context.put(ItemBaseStatusModuleKeys.ITEM_BASE_STATUS, equipment.getBaseStatus());
             }
@@ -76,21 +80,16 @@ public class ItemBaseStatusModule implements IItemModule {
             }
             newLore.add(Component.empty());
 
-            List<Component> currentLore = meta.lore();
-            List<Component> combinedLore = new ArrayList<>();
-
-            if (currentLore != null) {
-                combinedLore.addAll(currentLore);
-            }
-            combinedLore.addAll(newLore);
-
-            meta.lore(combinedLore);
-            context.getItemStack().setItemMeta(meta);
+            context.getLoreUtil().addAllLore(newLore);
         }
 
         @Override
         public void reader(ICustomItem customItem, ItemStack itemStack, IItemReaderContext context) {
             PDCWrapper pdc = new PDCWrapper(itemStack.getItemMeta());
+
+            if (ItemRegistry.getById(pdc.get(MainModuleKeys.PDC_ITEM_ID)) instanceof IEquipmentItem equipment) {
+                context.put(ItemBaseStatusModuleKeys.ITEM_BASE_STATUS, equipment.getBaseStatus());
+            }
         }
     }
 }

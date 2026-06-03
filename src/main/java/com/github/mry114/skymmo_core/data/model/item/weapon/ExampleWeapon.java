@@ -1,10 +1,10 @@
-package com.github.mry114.skymmo_core.data.item.armor;
+package com.github.mry114.skymmo_core.data.model.item.weapon;
 
 import com.github.mry114.skymmo_core.data.type.Rarity;
 import com.github.mry114.skymmo_core.data.type.Status;
 import com.github.mry114.skymmo_core.api.item.can.ItemSkill;
 import com.github.mry114.skymmo_core.api.item.can.UseRequirement;
-import com.github.mry114.skymmo_core.core.item.type.equipment.ArmorItem;
+import com.github.mry114.skymmo_core.core.item.type.equipment.WeaponItem;
 import com.github.mry114.skymmo_core.util.StatusContainer;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
@@ -14,8 +14,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class ExampleArmor extends ArmorItem {
-    public ExampleArmor() {
+public class ExampleWeapon extends WeaponItem {
+    public ExampleWeapon() {
         super(
                 new UseRequirement() {
                     @Override
@@ -52,15 +52,15 @@ public class ExampleArmor extends ArmorItem {
     @Override
     public @NotNull StatusContainer getBaseStatus() {
         return new StatusContainer.Builder()
-                .add(Status.DEFENCE, 10.0)
+                .add(Status.ATTACK, 10.0)
                 .build();
     }
 
     @Override
     public @NotNull StatusContainer getMainStatus() {
         return new StatusContainer.Builder()
-                .add(Status.DEFENCE_PERCENT, 0.2)
-                .add(Status.MOVE_SPEED, 0.1)
+                .add(Status.ATTACK_PERCENT, 0.2)
+                .add(Status.ATTACK_SPEED, 0.1)
                 .build();
     }
 
@@ -73,21 +73,21 @@ public class ExampleArmor extends ArmorItem {
 
     @Override
     public int getId() {
-        return 200_001;
+        return 100_001;
     }
 
     @Override
     public @NotNull Component getName() {
-        return Component.text("テストアーマー");
+        return Component.text("テストウェポン");
     }
 
     @Override
     public @NotNull Material getMaterial() {
-        return Material.IRON_CHESTPLATE;
+        return Material.IRON_SWORD;
     }
 
     @Override
     public @NotNull Rarity getRarity() {
-        return Rarity.LEGENDARY;
+        return Rarity.MYTHIC;
     }
 }

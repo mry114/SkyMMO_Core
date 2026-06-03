@@ -1,4 +1,4 @@
-package com.github.mry114.skymmo_core.data.context.equipment;
+package com.github.mry114.skymmo_core.data.context.main.equipment;
 
 import com.github.mry114.skymmo_core.core.context.key.ItemContextKey;
 import com.github.mry114.skymmo_core.util.StatusContainer;

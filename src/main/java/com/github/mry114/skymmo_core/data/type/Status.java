@@ -5,36 +5,36 @@ public enum Status {
     //実数
     ATTACK("Attack", false),
     DEFENCE("Defence", false),
-    HP("Hp", false),
-    MP("Mp", false),
+    HP("HP", false),
+    MP("MP", false),
 
     //パーセント
-    ATTACK_PERCENT("Attack percent", true),
-    DEFENCE_PERCENT("Defence percent", true),
-    HP_PERCENT("Hp percent", true),
-    MP_PERCENT("Mp percent", true),
+    ATTACK_PERCENT("Attack Percent", true),
+    DEFENCE_PERCENT("Defence Percent", true),
+    HP_PERCENT("HP Percent", true),
+    MP_PERCENT("MP Percent", true),
 
-    ATTACK_SPEED("Attack speed", true),
-    CRITICAL_DAMAGE("Critical damage", true),
-    CRITICAL_CHANCE("Critical chance", true),
+    ATTACK_SPEED("Attack Speed", true),
+    CRITICAL_DAMAGE("Critical Damage", true),
+    CRITICAL_CHANCE("Critical Chance", true),
 
     //採掘
-    MINING_FORTUNE("Mining fortune", false),
-    MINING_POWER("Mining power", false),
+    MINING_FORTUNE("Mining Fortune", false),
+    MINING_POWER("Mining Power", false),
 
     //農業
-    FARMING_FORTUNE("Farming fortune", false),
+    FARMING_FORTUNE("Farming Fortune", false),
 
     //林業
-    FORAGING_FORTUNE("Foraging fortune", false),
+    FORAGING_FORTUNE("Foraging Fortune", false),
 
     //釣り
-    FISHING_FORTUNE("Fishing fortune", false),
-    FISHING_POWER("Fishing power", false),
+    FISHING_FORTUNE("Fishing Fortune", false),
+    FISHING_POWER("Fishing Power", false),
 
     //総合的動作影響
-    MOVE_SPEED("Move speed", true),
-    JUMP_POWER("Jump power", true)
+    MOVE_SPEED("Move Speed", true),
+    JUMP_POWER("Jump Power", true)
     ;
 
     private final String displayName;

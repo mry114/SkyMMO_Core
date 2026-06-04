@@ -1,4 +1,4 @@
-package com.github.mry114.skymmo_core.data.context.main.name;
+package com.github.mry114.skymmo_core.data.context.basic.name;
 
 import com.github.mry114.skymmo_core.core.context.key.ItemContextKey;
 import net.kyori.adventure.text.Component;

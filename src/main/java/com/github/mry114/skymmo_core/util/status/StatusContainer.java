@@ -1,4 +1,4 @@
-package com.github.mry114.skymmo_core.util;
+package com.github.mry114.skymmo_core.util.status;
 
 import com.github.mry114.skymmo_core.data.type.Status;
 

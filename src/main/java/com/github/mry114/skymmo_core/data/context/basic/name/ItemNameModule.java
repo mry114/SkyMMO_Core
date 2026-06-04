@@ -1,4 +1,4 @@
-package com.github.mry114.skymmo_core.data.context.main.name;
+package com.github.mry114.skymmo_core.data.context.basic.name;
 
 import com.github.mry114.skymmo_core.api.item.ICustomItem;
 import com.github.mry114.skymmo_core.api.module.IItemModule;
@@ -7,15 +7,14 @@ import com.github.mry114.skymmo_core.api.module.processor.IItemProcessor;
 import com.github.mry114.skymmo_core.api.module.processor.IItemReader;
 import com.github.mry114.skymmo_core.core.context.*;
 import com.github.mry114.skymmo_core.data.context.attribute.ItemAttributeModuleKeys;
-import com.github.mry114.skymmo_core.data.context.main.MainModuleKeys;
-import com.github.mry114.skymmo_core.data.context.main.rarity.ItemRarityModuleKeys;
+import com.github.mry114.skymmo_core.data.context.basic.MainModuleKeys;
+import com.github.mry114.skymmo_core.data.context.basic.rarity.ItemRarityModuleKeys;
 import com.github.mry114.skymmo_core.registry.ItemRegistry;
 import com.github.mry114.skymmo_core.util.MetaDataUtil;
 import com.github.mry114.skymmo_core.util.pdc.PDCWrapper;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.Nullable;
 
 public class ItemNameModule implements IItemModule {

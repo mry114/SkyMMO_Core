@@ -1,6 +1,6 @@
 package com.github.mry114.skymmo_core.api.attribute;
 
-import com.github.mry114.skymmo_core.util.StatusContainer;
+import com.github.mry114.skymmo_core.util.status.StatusContainer;
 import net.kyori.adventure.text.Component;
 
 public interface IAttribute {

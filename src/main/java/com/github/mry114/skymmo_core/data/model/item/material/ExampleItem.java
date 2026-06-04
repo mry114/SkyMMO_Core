@@ -10,7 +10,7 @@ public class ExampleItem extends MaterialItem {
 
     @Override
     public int getId() {
-        return 1;
+        return 0;
     }
 
     @Override

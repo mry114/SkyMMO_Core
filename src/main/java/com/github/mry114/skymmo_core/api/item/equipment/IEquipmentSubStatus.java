@@ -1,7 +1,6 @@
-package com.github.mry114.skymmo_core.api.item.equipment.capa;
+package com.github.mry114.skymmo_core.api.item.equipment;
 
-import com.github.mry114.skymmo_core.api.item.equipment.IEquipmentItem;
-import com.github.mry114.skymmo_core.util.StatusContainer;
+import com.github.mry114.skymmo_core.util.status.StatusContainer;
 import org.jetbrains.annotations.NotNull;
 
 public interface IEquipmentSubStatus extends IEquipmentItem {

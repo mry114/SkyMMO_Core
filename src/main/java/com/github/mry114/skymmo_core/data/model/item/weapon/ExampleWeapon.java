@@ -5,11 +5,13 @@ import com.github.mry114.skymmo_core.data.type.Status;
 import com.github.mry114.skymmo_core.api.item.can.ItemSkill;
 import com.github.mry114.skymmo_core.api.item.can.UseRequirement;
 import com.github.mry114.skymmo_core.core.item.type.equipment.WeaponItem;
-import com.github.mry114.skymmo_core.util.StatusContainer;
+import com.github.mry114.skymmo_core.util.status.StatusContainer;
 import net.kyori.adventure.text.Component;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Event;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.util.Vector;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -38,8 +40,16 @@ public class ExampleWeapon extends WeaponItem {
                     }
 
                     @Override
-                    public void onSkillAction(Event event) {
+                    public void onSkillAction(PlayerInteractEvent event) {
+                        Player player = event.getPlayer();
+                        Location loc = player.getLocation();
 
+                        Vector direction = loc.getDirection();
+                        Vector blocksAhead = direction.multiply(5);
+
+                        Location tpLocation = loc.add(blocksAhead);
+                        player.teleport(tpLocation);
+                        loc.getWorld().createExplosion(loc, 4.0F, false, false);
                     }
 
                     @Override
@@ -53,12 +63,6 @@ public class ExampleWeapon extends WeaponItem {
     public @NotNull StatusContainer getBaseStatus() {
         return new StatusContainer.Builder()
                 .add(Status.ATTACK, 10.0)
-                .build();
-    }
-
-    @Override
-    public @NotNull StatusContainer getMainStatus() {
-        return new StatusContainer.Builder()
                 .add(Status.ATTACK_PERCENT, 0.2)
                 .add(Status.ATTACK_SPEED, 0.1)
                 .build();
@@ -73,7 +77,7 @@ public class ExampleWeapon extends WeaponItem {
 
     @Override
     public int getId() {
-        return 100_001;
+        return 100_000;
     }
 
     @Override

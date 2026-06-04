@@ -2,8 +2,8 @@ package com.github.mry114.skymmo_core.core.item.type;
 
 import com.github.mry114.skymmo_core.api.item.ICustomItem;
 import com.github.mry114.skymmo_core.api.module.IItemModule;
-import com.github.mry114.skymmo_core.data.context.main.name.ItemNameModule;
-import com.github.mry114.skymmo_core.data.context.main.rarity.ItemRarityModule;
+import com.github.mry114.skymmo_core.data.context.basic.name.ItemNameModule;
+import com.github.mry114.skymmo_core.data.context.basic.rarity.ItemRarityModule;
 import com.github.mry114.skymmo_core.data.type.ItemType;
 import org.jetbrains.annotations.NotNull;
 

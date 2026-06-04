@@ -1,4 +1,4 @@
-package com.github.mry114.skymmo_core.data.context.main.equipment;
+package com.github.mry114.skymmo_core.data.context.basic.equipment.base_status;
 
 import com.github.mry114.skymmo_core.api.item.ICustomItem;
 import com.github.mry114.skymmo_core.api.item.equipment.IEquipmentItem;
@@ -10,11 +10,12 @@ import com.github.mry114.skymmo_core.core.context.IItemCalculatorContext;
 import com.github.mry114.skymmo_core.core.context.IItemProcessorContext;
 import com.github.mry114.skymmo_core.core.context.IItemReaderContext;
 import com.github.mry114.skymmo_core.core.context.ItemGeneratorContext;
-import com.github.mry114.skymmo_core.data.context.main.MainModuleKeys;
+import com.github.mry114.skymmo_core.data.context.basic.MainModuleKeys;
 import com.github.mry114.skymmo_core.data.type.Status;
 import com.github.mry114.skymmo_core.registry.ItemRegistry;
 import com.github.mry114.skymmo_core.util.MetaDataUtil;
 import com.github.mry114.skymmo_core.util.pdc.PDCWrapper;
+import com.github.mry114.skymmo_core.util.status.DisplayStatusUtil;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.format.TextDecoration;
@@ -69,14 +70,17 @@ public class ItemBaseStatusModule implements IItemModule {
                     .append(Component.text(" Base Status ", TextColor.color(0xFFAA00)).decoration(TextDecoration.BOLD, false).decoration(TextDecoration.ITALIC, false))
                     .append(Component.text("]", TextColor.color(0xFFFF55)).decorate(TextDecoration.BOLD).decoration(TextDecoration.ITALIC, false)));
 
+            boolean flg = false;
             for (Status status : Status.values()) {
                 double value = context.get(ItemBaseStatusModuleKeys.ITEM_BASE_STATUS).get(status);
                 if (value != 0) {
-                    newLore.add(Component.text(status.getDisplayName() + ": " + ((value > 0) ? "+" : "") + (status.getIsPercent() ? value * 100 : value) + (status.getIsPercent() ? "%" : ""), TextColor.color(0xC4C4C4)).decoration(TextDecoration.ITALIC, false));
+                    flg = true;
+                    newLore.add(DisplayStatusUtil.getDisplayStatus(status, value));
                 }
             }
             newLore.add(Component.empty());
 
+            if (!flg) return;
             meta.loreAddAll(newLore);
             meta.setItemMeta();
         }

@@ -5,11 +5,11 @@ import com.github.mry114.skymmo_core.data.type.Status;
 import com.github.mry114.skymmo_core.api.item.can.ItemSkill;
 import com.github.mry114.skymmo_core.api.item.can.UseRequirement;
 import com.github.mry114.skymmo_core.core.item.type.equipment.ArmorItem;
-import com.github.mry114.skymmo_core.util.StatusContainer;
+import com.github.mry114.skymmo_core.util.status.StatusContainer;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Event;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -38,7 +38,7 @@ public class ExampleArmor extends ArmorItem {
                     }
 
                     @Override
-                    public void onSkillAction(Event event) {
+                    public void onSkillAction(PlayerInteractEvent event) {
 
                     }
 
@@ -53,12 +53,6 @@ public class ExampleArmor extends ArmorItem {
     public @NotNull StatusContainer getBaseStatus() {
         return new StatusContainer.Builder()
                 .add(Status.DEFENCE, 10.0)
-                .build();
-    }
-
-    @Override
-    public @NotNull StatusContainer getMainStatus() {
-        return new StatusContainer.Builder()
                 .add(Status.DEFENCE_PERCENT, 0.2)
                 .add(Status.MOVE_SPEED, 0.1)
                 .build();
@@ -73,7 +67,7 @@ public class ExampleArmor extends ArmorItem {
 
     @Override
     public int getId() {
-        return 200_001;
+        return 200_000;
     }
 
     @Override

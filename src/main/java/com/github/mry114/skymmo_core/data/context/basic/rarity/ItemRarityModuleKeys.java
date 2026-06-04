@@ -1,4 +1,4 @@
-package com.github.mry114.skymmo_core.data.context.main.rarity;
+package com.github.mry114.skymmo_core.data.context.basic.rarity;
 
 import com.github.mry114.skymmo_core.SkyMMO_Core;
 import com.github.mry114.skymmo_core.data.type.Rarity;

@@ -1,4 +1,4 @@
-package com.github.mry114.skymmo_core.data.context.main.rarity;
+package com.github.mry114.skymmo_core.data.context.basic.rarity;
 
 import com.github.mry114.skymmo_core.api.item.ICustomItem;
 import com.github.mry114.skymmo_core.api.module.IItemModule;
@@ -9,14 +9,13 @@ import com.github.mry114.skymmo_core.core.context.IItemCalculatorContext;
 import com.github.mry114.skymmo_core.core.context.IItemProcessorContext;
 import com.github.mry114.skymmo_core.core.context.IItemReaderContext;
 import com.github.mry114.skymmo_core.core.context.ItemGeneratorContext;
-import com.github.mry114.skymmo_core.data.context.main.MainModuleKeys;
+import com.github.mry114.skymmo_core.data.context.basic.MainModuleKeys;
 import com.github.mry114.skymmo_core.registry.ItemRegistry;
 import com.github.mry114.skymmo_core.util.MetaDataUtil;
 import com.github.mry114.skymmo_core.util.pdc.PDCWrapper;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;

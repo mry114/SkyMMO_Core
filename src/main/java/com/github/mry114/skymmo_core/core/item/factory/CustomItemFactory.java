@@ -5,7 +5,11 @@ import com.github.mry114.skymmo_core.api.module.IItemModule;
 import com.github.mry114.skymmo_core.core.context.ItemContext;
 import com.github.mry114.skymmo_core.core.context.ItemGeneratorContext;
 import com.github.mry114.skymmo_core.core.context.ItemUpdaterContext;
+import com.github.mry114.skymmo_core.data.context.basic.MainModuleKeys;
+import com.github.mry114.skymmo_core.data.pdc.PDCKey;
+import com.github.mry114.skymmo_core.util.pdc.PDCWrapper;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -26,6 +30,10 @@ public class CustomItemFactory {
         ItemStack item = new ItemStack(customItem.getMaterial());
         ItemContext context = new ItemContext(item);
         context.getItemStack().lore(new ArrayList<>());
+        ItemMeta meta = item.getItemMeta();
+        PDCWrapper pdcWrapper = new PDCWrapper(meta);
+        pdcWrapper.set(MainModuleKeys.PDC_ITEM_ID, customItem.getId());
+        item.setItemMeta(meta);
 
         for (IItemModule module : customItem.getProcessorModule()) {
             if (module.getItemCalculator() != null) {

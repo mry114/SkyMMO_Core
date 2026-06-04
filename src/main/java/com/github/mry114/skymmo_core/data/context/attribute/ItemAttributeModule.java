@@ -8,6 +8,7 @@ import com.github.mry114.skymmo_core.api.module.processor.IItemReader;
 import com.github.mry114.skymmo_core.api.module.processor.IItemUpdater;
 import com.github.mry114.skymmo_core.core.context.*;
 import com.github.mry114.skymmo_core.registry.ItemAttributeRegistry;
+import com.github.mry114.skymmo_core.util.MetaDataUtil;
 import com.github.mry114.skymmo_core.util.pdc.PDCWrapper;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
@@ -49,8 +50,9 @@ public class ItemAttributeModule implements IItemModule {
         @Override
         public void process(ICustomItem customItem, IItemProcessorContext context) {
             ItemStack itemStack = context.getItemStack();
-            PDCWrapper pdc = new PDCWrapper(itemStack.getItemMeta());
-            pdc.set(ItemAttributeModuleKeys.PDC_ATTRIBUTE_ID, context.get(ItemAttributeModuleKeys.ITEM_ATTRIBUTE).getId());
+            MetaDataUtil meta = new MetaDataUtil(itemStack);
+            meta.getPDC().set(ItemAttributeModuleKeys.PDC_ATTRIBUTE_ID, context.get(ItemAttributeModuleKeys.ITEM_ATTRIBUTE).getId());
+            meta.setItemMeta();
         }
 
         @Override

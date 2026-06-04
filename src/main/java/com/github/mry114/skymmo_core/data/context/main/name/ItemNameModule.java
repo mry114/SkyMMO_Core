@@ -10,6 +10,7 @@ import com.github.mry114.skymmo_core.data.context.attribute.ItemAttributeModuleK
 import com.github.mry114.skymmo_core.data.context.main.MainModuleKeys;
 import com.github.mry114.skymmo_core.data.context.main.rarity.ItemRarityModuleKeys;
 import com.github.mry114.skymmo_core.registry.ItemRegistry;
+import com.github.mry114.skymmo_core.util.MetaDataUtil;
 import com.github.mry114.skymmo_core.util.pdc.PDCWrapper;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
@@ -53,7 +54,7 @@ public class ItemNameModule implements IItemModule {
         @Override
         public void process(ICustomItem customItem, IItemProcessorContext context) {
             ItemStack itemStack = context.getItemStack();
-            ItemMeta meta = itemStack.getItemMeta();
+            MetaDataUtil meta = new MetaDataUtil(itemStack);
             Component displayName;
 
             if (context.get(ItemAttributeModuleKeys.ITEM_ATTRIBUTE) != null) {
@@ -70,8 +71,8 @@ public class ItemNameModule implements IItemModule {
                         .color(context.get(ItemRarityModuleKeys.ITEM_RARITY).getColor());
             }
 
-            meta.displayName(displayName);
-            itemStack.setItemMeta(meta);
+            meta.setDisplayName(displayName);
+            meta.setItemMeta();
         }
 
         @Override

@@ -11,15 +11,14 @@ import com.github.mry114.skymmo_core.core.context.IItemProcessorContext;
 import com.github.mry114.skymmo_core.core.context.IItemReaderContext;
 import com.github.mry114.skymmo_core.core.context.ItemGeneratorContext;
 import com.github.mry114.skymmo_core.data.context.main.MainModuleKeys;
-import com.github.mry114.skymmo_core.data.context.main.name.ItemNameModuleKeys;
 import com.github.mry114.skymmo_core.data.type.Status;
 import com.github.mry114.skymmo_core.registry.ItemRegistry;
+import com.github.mry114.skymmo_core.util.MetaDataUtil;
 import com.github.mry114.skymmo_core.util.pdc.PDCWrapper;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -62,8 +61,7 @@ public class ItemBaseStatusModule implements IItemModule {
 
         @Override
         public void process(ICustomItem customItem, IItemProcessorContext context) {
-            ItemMeta meta = context.getItemStack().getItemMeta();
-            if (meta == null) return;
+            MetaDataUtil meta = new MetaDataUtil(context.getItemStack());
 
             List<Component> newLore = new ArrayList<>();
 
@@ -78,8 +76,9 @@ public class ItemBaseStatusModule implements IItemModule {
                 }
             }
             newLore.add(Component.empty());
-            meta.lore().addAll(newLore);
-            context.getItemStack().setItemMeta(meta);
+
+            meta.loreAddAll(newLore);
+            meta.setItemMeta();
         }
 
         @Override

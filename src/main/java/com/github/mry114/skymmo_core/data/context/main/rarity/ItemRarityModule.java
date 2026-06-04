@@ -11,6 +11,7 @@ import com.github.mry114.skymmo_core.core.context.IItemReaderContext;
 import com.github.mry114.skymmo_core.core.context.ItemGeneratorContext;
 import com.github.mry114.skymmo_core.data.context.main.MainModuleKeys;
 import com.github.mry114.skymmo_core.registry.ItemRegistry;
+import com.github.mry114.skymmo_core.util.MetaDataUtil;
 import com.github.mry114.skymmo_core.util.pdc.PDCWrapper;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
@@ -57,14 +58,16 @@ public class ItemRarityModule implements IItemModule {
 
         @Override
         public void process(ICustomItem customItem, IItemProcessorContext context) {
+            MetaDataUtil meta = new MetaDataUtil(context.getItemStack());
+
             List<Component> lore = new ArrayList<>();
             lore.add(Component.text(context.get(ItemRarityModuleKeys.ITEM_RARITY).name() + " " + customItem.getItemType().name())
                     .decorate(TextDecoration.BOLD)
                     .decoration(TextDecoration.ITALIC, false)
                     .color(context.get(ItemRarityModuleKeys.ITEM_RARITY).getColor()));
 
-            context.getItemStack().getItemMeta().lore().addAll(lore);
-            context.getItemStack().setItemMeta(context.getItemStack().getItemMeta());
+            meta.loreAddAll(lore);
+            meta.setItemMeta();
         }
 
         @Override

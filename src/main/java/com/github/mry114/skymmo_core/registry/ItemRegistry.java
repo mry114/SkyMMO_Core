@@ -4,7 +4,6 @@ import com.github.mry114.skymmo_core.api.item.ICustomItem;
 import com.github.mry114.skymmo_core.data.model.item.armor.ExampleArmor;
 import com.github.mry114.skymmo_core.data.model.item.weapon.ExampleWeapon;
 import com.github.mry114.skymmo_core.data.model.item.material.ExampleItem;
-import com.github.mry114.skymmo_core.data.model.item.weapon.Hyperion;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,7 +16,6 @@ public class ItemRegistry {
 
     // 武器
     public static final ICustomItem EXAMPLE_WEAPON = register(new ExampleWeapon());
-    public static final ICustomItem HYPERION = register(new Hyperion());
 
     // 防具
     public static final ICustomItem EXAMPLE_ARMOR  = register(new ExampleArmor());

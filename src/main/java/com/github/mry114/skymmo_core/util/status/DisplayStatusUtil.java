@@ -1,11 +1,10 @@
 package com.github.mry114.skymmo_core.util.status;
 
-import com.github.mry114.skymmo_core.data.type.Status;
+import com.github.mry114.skymmo_core.data.Status;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 
-import java.awt.*;
 import java.text.DecimalFormat;
 
 public class DisplayStatusUtil {

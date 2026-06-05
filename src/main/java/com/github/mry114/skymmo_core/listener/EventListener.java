@@ -1,10 +1,10 @@
 package com.github.mry114.skymmo_core.listener;
 
-import com.github.mry114.skymmo_core.api.item.capa.ICustomItemSkill;
-import com.github.mry114.skymmo_core.core.context.ItemGeneratorContext;
+import com.github.mry114.skymmo_core.api.item.diff.capa.ICustomItemSkill;
+import com.github.mry114.skymmo_core.core.item.context.ItemGeneratorContext;
 import com.github.mry114.skymmo_core.core.item.factory.CustomItemFactory;
-import com.github.mry114.skymmo_core.data.context.attribute.ItemAttributeModuleKeys;
-import com.github.mry114.skymmo_core.data.context.basic.MainModuleKeys;
+import com.github.mry114.skymmo_core.data.item.context.attribute.ItemAttributeModuleKeys;
+import com.github.mry114.skymmo_core.data.item.context.basic.MainModuleKeys;
 import com.github.mry114.skymmo_core.content.attribute.ExampleAttribute;
 import com.github.mry114.skymmo_core.registry.ItemRegistry;
 import com.github.mry114.skymmo_core.util.pdc.PDCWrapper;

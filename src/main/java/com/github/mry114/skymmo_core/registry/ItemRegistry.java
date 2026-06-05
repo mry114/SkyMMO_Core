@@ -1,6 +1,6 @@
 package com.github.mry114.skymmo_core.registry;
 
-import com.github.mry114.skymmo_core.api.item.ICustomItem;
+import com.github.mry114.skymmo_core.api.item.diff.ICustomItem;
 import com.github.mry114.skymmo_core.content.item.armor.ExampleArmor;
 import com.github.mry114.skymmo_core.content.item.weapon.ExampleWeapon;
 import com.github.mry114.skymmo_core.content.item.material.ExampleItem;

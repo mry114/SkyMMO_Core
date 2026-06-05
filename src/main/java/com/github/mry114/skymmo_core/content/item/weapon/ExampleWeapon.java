@@ -1,14 +1,15 @@
 package com.github.mry114.skymmo_core.content.item.weapon;
 
 import com.github.mry114.skymmo_core.api.type.IItemType;
-import com.github.mry114.skymmo_core.data.type.Rarity;
-import com.github.mry114.skymmo_core.data.type.Status;
-import com.github.mry114.skymmo_core.api.item.can.ItemSkill;
-import com.github.mry114.skymmo_core.api.item.can.UseRequirement;
+import com.github.mry114.skymmo_core.data.item.Rarity;
+import com.github.mry114.skymmo_core.data.Status;
+import com.github.mry114.skymmo_core.api.item.diff.can.ItemSkill;
+import com.github.mry114.skymmo_core.api.item.diff.can.UseRequirement;
 import com.github.mry114.skymmo_core.core.item.type.equipment.WeaponItem;
-import com.github.mry114.skymmo_core.data.type.item.WeaponType;
-import com.github.mry114.skymmo_core.util.status.StatusContainer;
+import com.github.mry114.skymmo_core.data.item.type.WeaponType;
+import com.github.mry114.skymmo_core.core.status.StatusContainer;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -39,7 +40,7 @@ public class ExampleWeapon extends WeaponItem {
                     @Override
                     public @NotNull List<Component> getSkillLore() {
                         return List.of(
-                                Component.text("5ブロック前にテレポートし、爆発を起こします")
+                                Component.text("5ブロック前にテレポートし、爆発を起こします", TextColor.color(0xC4C4C4))
                         );
                     }
 
@@ -66,8 +67,8 @@ public class ExampleWeapon extends WeaponItem {
     @Override
     public @NotNull StatusContainer getBaseStatus() {
         return new StatusContainer.Builder()
-                .add(Status.ATTACK, 10.0)
-                .add(Status.ATTACK_PERCENT, 0.2)
+                .add(Status.DAMAGE, 10.0)
+                .add(Status.DAMAGE_PERCENT, 0.2)
                 .add(Status.ATTACK_SPEED, 0.1)
                 .build();
     }

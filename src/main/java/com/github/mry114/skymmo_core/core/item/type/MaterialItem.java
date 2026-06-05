@@ -1,9 +1,9 @@
 package com.github.mry114.skymmo_core.core.item.type;
 
-import com.github.mry114.skymmo_core.api.item.ICustomItem;
-import com.github.mry114.skymmo_core.api.module.IItemModule;
-import com.github.mry114.skymmo_core.data.context.basic.name.ItemNameModule;
-import com.github.mry114.skymmo_core.data.context.basic.rarity.ItemRarityModule;
+import com.github.mry114.skymmo_core.api.item.diff.ICustomItem;
+import com.github.mry114.skymmo_core.api.item.module.IItemModule;
+import com.github.mry114.skymmo_core.data.item.context.basic.name.ItemNameModule;
+import com.github.mry114.skymmo_core.data.item.context.basic.rarity.ItemRarityModule;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;

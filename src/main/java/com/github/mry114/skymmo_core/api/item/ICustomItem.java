@@ -1,10 +1,12 @@
 package com.github.mry114.skymmo_core.api.item;
 
-import com.github.mry114.skymmo_core.data.type.ItemType;
+import com.github.mry114.skymmo_core.api.type.IItemType;
+import com.github.mry114.skymmo_core.data.type.ItemGroup;
 import com.github.mry114.skymmo_core.data.type.Rarity;
 import com.github.mry114.skymmo_core.api.module.IItemModule;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
+import org.bukkit.inventory.ItemType;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -33,7 +35,7 @@ public interface ICustomItem {
     /**
      * アイテムのItemTypeを返します。
      */
-    @NotNull ItemType getItemType();
+    @NotNull IItemType getItemType();
 
     /**
      * アイテムを生成するときに、ItemStackに固める時の処理にどのProcessorを要求するかを返します。

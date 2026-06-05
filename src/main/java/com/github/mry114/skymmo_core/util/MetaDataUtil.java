@@ -4,15 +4,16 @@ import com.github.mry114.skymmo_core.util.pdc.PDCWrapper;
 import net.kyori.adventure.text.Component;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
 public record MetaDataUtil(ItemMeta meta, ItemStack item) {
-    public MetaDataUtil(ItemStack item) {
+    public MetaDataUtil(@NotNull ItemStack item) {
         this(item.getItemMeta(), item);
     }
 
-    public MetaDataUtil(ItemMeta meta) {
+    public MetaDataUtil(@NotNull ItemMeta meta) {
         this(meta, null);
     }
 

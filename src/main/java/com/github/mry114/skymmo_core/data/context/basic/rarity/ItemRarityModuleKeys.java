@@ -9,6 +9,4 @@ import org.bukkit.persistence.PersistentDataType;
 
 public class ItemRarityModuleKeys {
     public static final ItemContextKey<Rarity> ITEM_RARITY = new ItemContextKey<>("item_rarity");
-
-    PDCKey<String, String> PDC_RARITY = new PDCKey<>(PersistentDataType.STRING, new NamespacedKey(SkyMMO_Core.getInstance(), "pdc_rarity"));
 }

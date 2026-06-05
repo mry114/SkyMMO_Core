@@ -12,7 +12,6 @@ import com.github.mry114.skymmo_core.data.context.attribute.ItemAttributeModule;
 import com.github.mry114.skymmo_core.data.context.basic.equipment.base_status.ItemBaseStatusModule;
 import com.github.mry114.skymmo_core.data.context.basic.name.ItemNameModule;
 import com.github.mry114.skymmo_core.data.context.basic.rarity.ItemRarityModule;
-import com.github.mry114.skymmo_core.data.type.ItemType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -37,11 +36,6 @@ public abstract class WeaponItem implements IEquipmentItem, ICustomItemRequireme
     @Override
     public @Nullable IItemSkill getItemSkill() {
         return itemSkill;
-    }
-
-    @Override
-    public @NotNull ItemType getItemType() {
-        return ItemType.WEAPON;
     }
 
     @Override

@@ -54,17 +54,18 @@ public class ItemNameModule implements IItemModule {
         public void process(ICustomItem customItem, IItemProcessorContext context) {
             ItemStack itemStack = context.getItemStack();
             MetaDataUtil meta = new MetaDataUtil(itemStack);
+            Component name = customItem.getName();
             Component displayName;
 
             if (context.get(ItemAttributeModuleKeys.ITEM_ATTRIBUTE) != null) {
                 displayName = context.get(ItemAttributeModuleKeys.ITEM_ATTRIBUTE).getDisplayName()
                         .append(Component.text(" "))
-                        .append(context.get(ItemNameModuleKeys.ITEM_NAME))
+                        .append(name)
                         .decorate(TextDecoration.BOLD)
                         .decoration(TextDecoration.ITALIC, false)
                         .color(context.get(ItemRarityModuleKeys.ITEM_RARITY).getColor());
             } else {
-                displayName = context.get(ItemNameModuleKeys.ITEM_NAME)
+                displayName =(name)
                         .decorate(TextDecoration.BOLD)
                         .decoration(TextDecoration.ITALIC, false)
                         .color(context.get(ItemRarityModuleKeys.ITEM_RARITY).getColor());

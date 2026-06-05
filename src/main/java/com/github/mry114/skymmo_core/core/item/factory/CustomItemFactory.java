@@ -6,7 +6,7 @@ import com.github.mry114.skymmo_core.core.context.ItemContext;
 import com.github.mry114.skymmo_core.core.context.ItemGeneratorContext;
 import com.github.mry114.skymmo_core.core.context.ItemUpdaterContext;
 import com.github.mry114.skymmo_core.data.context.basic.MainModuleKeys;
-import com.github.mry114.skymmo_core.data.pdc.PDCKey;
+import com.github.mry114.skymmo_core.registry.ItemRegistry;
 import com.github.mry114.skymmo_core.util.pdc.PDCWrapper;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -20,13 +20,8 @@ import java.util.ArrayList;
  * 例えば、ModuleAとModuleBがあった場合、ModuleAのCalculatorとProcessorが先に実行され、その後ModuleBのCalculatorとProcessorが実行されます
  */
 public class CustomItemFactory {
-    ICustomItem customItem;
 
-    public CustomItemFactory(ICustomItem customItem) {
-        this.customItem = customItem;
-    }
-
-    public ItemStack create(@NotNull ItemGeneratorContext generator) {
+    public ItemStack create(@NotNull ICustomItem customItem, @NotNull ItemGeneratorContext generator) {
         ItemStack item = new ItemStack(customItem.getMaterial());
         ItemContext context = new ItemContext(item);
         context.getItemStack().lore(new ArrayList<>());
@@ -54,6 +49,7 @@ public class CustomItemFactory {
 
         ItemContext context = new ItemContext(item);
         context.getItemStack().lore(new ArrayList<>());
+        ICustomItem customItem = ItemRegistry.getById(new PDCWrapper(item.getItemMeta()).get(MainModuleKeys.PDC_ITEM_ID));
 
         for (IItemModule module : customItem.getProcessorModule()) {
             if (module.getItemReader() != null) {

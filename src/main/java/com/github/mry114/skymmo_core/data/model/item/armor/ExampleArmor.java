@@ -1,10 +1,12 @@
 package com.github.mry114.skymmo_core.data.model.item.armor;
 
+import com.github.mry114.skymmo_core.api.type.IItemType;
 import com.github.mry114.skymmo_core.data.type.Rarity;
 import com.github.mry114.skymmo_core.data.type.Status;
 import com.github.mry114.skymmo_core.api.item.can.ItemSkill;
 import com.github.mry114.skymmo_core.api.item.can.UseRequirement;
 import com.github.mry114.skymmo_core.core.item.type.equipment.ArmorItem;
+import com.github.mry114.skymmo_core.data.type.item.ArmorType;
 import com.github.mry114.skymmo_core.util.status.StatusContainer;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
@@ -33,7 +35,7 @@ public class ExampleArmor extends ArmorItem {
                 new ItemSkill() {
 
                     @Override
-                    public List<Component> getSkillLore() {
+                    public @NotNull List<Component> getSkillLore() {
                         return List.of();
                     }
 
@@ -83,5 +85,10 @@ public class ExampleArmor extends ArmorItem {
     @Override
     public @NotNull Rarity getRarity() {
         return Rarity.LEGENDARY;
+    }
+
+    @Override
+    public @NotNull IItemType<ArmorType> getItemType() {
+        return ArmorType.CHESTPLATE;
     }
 }

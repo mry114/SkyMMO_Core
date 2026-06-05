@@ -8,11 +8,11 @@ import com.github.mry114.skymmo_core.api.item.capa.ICustomItemRequirement;
 import com.github.mry114.skymmo_core.api.item.capa.ICustomItemSkill;
 import com.github.mry114.skymmo_core.api.item.equipment.IEquipmentItem;
 import com.github.mry114.skymmo_core.api.module.IItemModule;
+import com.github.mry114.skymmo_core.api.type.IItemType;
 import com.github.mry114.skymmo_core.data.context.attribute.ItemAttributeModule;
 import com.github.mry114.skymmo_core.data.context.basic.equipment.base_status.ItemBaseStatusModule;
 import com.github.mry114.skymmo_core.data.context.basic.name.ItemNameModule;
 import com.github.mry114.skymmo_core.data.context.basic.rarity.ItemRarityModule;
-import com.github.mry114.skymmo_core.data.type.ItemType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -38,11 +38,6 @@ public abstract class ArmorItem implements IEquipmentItem, ICustomItemRequiremen
     @Override
     public @Nullable IItemSkill getItemSkill() {
         return itemSkill;
-    }
-
-    @Override
-    public @NotNull ItemType getItemType() {
-        return ItemType.ARMOR;
     }
 
     @Override

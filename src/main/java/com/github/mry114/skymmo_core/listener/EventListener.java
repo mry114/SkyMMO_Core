@@ -6,7 +6,6 @@ import com.github.mry114.skymmo_core.core.item.factory.CustomItemFactory;
 import com.github.mry114.skymmo_core.data.context.attribute.ItemAttributeModuleKeys;
 import com.github.mry114.skymmo_core.data.context.basic.MainModuleKeys;
 import com.github.mry114.skymmo_core.data.model.attribute.ExampleAttribute;
-import com.github.mry114.skymmo_core.data.model.attribute.Mysterious;
 import com.github.mry114.skymmo_core.registry.ItemRegistry;
 import com.github.mry114.skymmo_core.util.pdc.PDCWrapper;
 import io.papermc.paper.event.player.AsyncChatEvent;
@@ -30,7 +29,7 @@ public class EventListener implements Listener {
                 ItemGeneratorContext context = new ItemGeneratorContext();
                 context.put(ItemAttributeModuleKeys.ITEM_ATTRIBUTE, new ExampleAttribute());
 
-                player.getInventory().setItem(0, new CustomItemFactory(ItemRegistry.EXAMPLE_WEAPON).create(context));
+                player.getInventory().setItem(0, new CustomItemFactory().create(ItemRegistry.EXAMPLE_WEAPON, context));
             }
         }
     }

@@ -1,7 +1,9 @@
 package com.github.mry114.skymmo_core.data.model.item.material;
 
+import com.github.mry114.skymmo_core.api.type.IItemType;
 import com.github.mry114.skymmo_core.data.type.Rarity;
 import com.github.mry114.skymmo_core.core.item.type.MaterialItem;
+import com.github.mry114.skymmo_core.data.type.item.MaterialType;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.jetbrains.annotations.NotNull;
@@ -26,5 +28,10 @@ public class ExampleItem extends MaterialItem {
     @Override
     public @NotNull Rarity getRarity() {
         return Rarity.COMMON;
+    }
+
+    @Override
+    public @NotNull IItemType<MaterialType> getItemType() {
+        return MaterialType.ITEM;
     }
 }

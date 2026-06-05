@@ -1,4 +1,4 @@
-package com.github.mry114.skymmo_core.data.model.item.armor;
+package com.github.mry114.skymmo_core.content.item.armor;
 
 import com.github.mry114.skymmo_core.api.type.IItemType;
 import com.github.mry114.skymmo_core.data.type.Rarity;

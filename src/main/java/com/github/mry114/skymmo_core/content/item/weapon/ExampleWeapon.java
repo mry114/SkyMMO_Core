@@ -1,4 +1,4 @@
-package com.github.mry114.skymmo_core.data.model.item.weapon;
+package com.github.mry114.skymmo_core.content.item.weapon;
 
 import com.github.mry114.skymmo_core.api.type.IItemType;
 import com.github.mry114.skymmo_core.data.type.Rarity;
@@ -6,7 +6,6 @@ import com.github.mry114.skymmo_core.data.type.Status;
 import com.github.mry114.skymmo_core.api.item.can.ItemSkill;
 import com.github.mry114.skymmo_core.api.item.can.UseRequirement;
 import com.github.mry114.skymmo_core.core.item.type.equipment.WeaponItem;
-import com.github.mry114.skymmo_core.data.type.item.MaterialType;
 import com.github.mry114.skymmo_core.data.type.item.WeaponType;
 import com.github.mry114.skymmo_core.util.status.StatusContainer;
 import net.kyori.adventure.text.Component;

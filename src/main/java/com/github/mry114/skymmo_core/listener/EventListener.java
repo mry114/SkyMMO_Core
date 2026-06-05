@@ -5,7 +5,7 @@ import com.github.mry114.skymmo_core.core.context.ItemGeneratorContext;
 import com.github.mry114.skymmo_core.core.item.factory.CustomItemFactory;
 import com.github.mry114.skymmo_core.data.context.attribute.ItemAttributeModuleKeys;
 import com.github.mry114.skymmo_core.data.context.basic.MainModuleKeys;
-import com.github.mry114.skymmo_core.data.model.attribute.ExampleAttribute;
+import com.github.mry114.skymmo_core.content.attribute.ExampleAttribute;
 import com.github.mry114.skymmo_core.registry.ItemRegistry;
 import com.github.mry114.skymmo_core.util.pdc.PDCWrapper;
 import io.papermc.paper.event.player.AsyncChatEvent;

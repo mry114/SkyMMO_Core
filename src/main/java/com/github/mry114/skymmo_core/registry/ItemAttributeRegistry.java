@@ -1,7 +1,7 @@
 package com.github.mry114.skymmo_core.registry;
 
 import com.github.mry114.skymmo_core.api.attribute.IAttribute;
-import com.github.mry114.skymmo_core.data.model.attribute.ExampleAttribute;
+import com.github.mry114.skymmo_core.content.attribute.ExampleAttribute;
 
 import java.util.HashMap;
 import java.util.Map;

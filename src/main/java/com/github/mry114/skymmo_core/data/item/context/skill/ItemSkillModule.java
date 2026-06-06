@@ -4,10 +4,7 @@ import com.github.mry114.skymmo_core.api.item.diff.ICustomItem;
 import com.github.mry114.skymmo_core.api.item.diff.can.IItemSkill;
 import com.github.mry114.skymmo_core.api.item.diff.capa.ICustomItemSkill;
 import com.github.mry114.skymmo_core.api.item.module.IItemModule;
-import com.github.mry114.skymmo_core.api.item.module.processor.IItemCalculator;
 import com.github.mry114.skymmo_core.api.item.module.processor.IItemProcessor;
-import com.github.mry114.skymmo_core.api.item.module.processor.IItemReader;
-import com.github.mry114.skymmo_core.api.item.module.processor.IItemUpdater;
 import com.github.mry114.skymmo_core.core.item.context.IItemProcessorContext;
 import com.github.mry114.skymmo_core.util.MetaDataUtil;
 import net.kyori.adventure.text.Component;
@@ -19,26 +16,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ItemSkillModule implements IItemModule {
-    @Override
-    public @Nullable IItemReader getItemReader() {
-        return IItemModule.super.getItemReader();
+    private static final ItemSkillModule INSTANCE = new ItemSkillModule();
+    private final ItemSkillLogic logic;
+
+    private ItemSkillModule() {
+        this.logic = new ItemSkillLogic();
+    }
+
+    public static ItemSkillModule getInstance() {
+        return INSTANCE;
     }
 
     @Override
     public @Nullable IItemProcessor getItemProcessor() {
-        return IItemModule.super.getItemProcessor();
+        return logic;
     }
-
-    @Override
-    public @Nullable IItemCalculator getItemCalculator() {
-        return IItemModule.super.getItemCalculator();
-    }
-
-    @Override
-    public @Nullable IItemUpdater getItemUpdater() {
-        return IItemModule.super.getItemUpdater();
-    }
-
     private static class ItemSkillLogic implements IItemProcessor {
 
         @Override
@@ -53,13 +45,15 @@ public class ItemSkillModule implements IItemModule {
 
                 List<Component> allLore = new ArrayList<>(List.of(
                         Component.text("[", TextColor.color(0xFFFF55)).decorate(TextDecoration.BOLD).decoration(TextDecoration.ITALIC, false)
-                                .append(Component.text(" Skill ", TextColor.color(0xFFAA00)).decoration(TextDecoration.BOLD, false).decoration(TextDecoration.ITALIC, false))
+                                .append(Component.text(" Skill Description ", TextColor.color(0xFFAA00)).decoration(TextDecoration.BOLD, false).decoration(TextDecoration.ITALIC, false))
                                 .append(Component.text("]", TextColor.color(0xFFFF55)).decorate(TextDecoration.BOLD).decoration(TextDecoration.ITALIC, false))
                 ));
 
                 allLore.addAll(itemSkill.getSkillLore());
+                allLore.add(Component.empty());
 
-                meta.setLore(allLore);
+                meta.loreAddAll(allLore);
+                meta.setItemMeta();
             }
         }
 

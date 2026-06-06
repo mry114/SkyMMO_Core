@@ -12,6 +12,7 @@ import com.github.mry114.skymmo_core.data.item.context.attribute.ItemAttributeMo
 import com.github.mry114.skymmo_core.data.item.context.basic.equipment.base_status.ItemBaseStatusModule;
 import com.github.mry114.skymmo_core.data.item.context.basic.name.ItemNameModule;
 import com.github.mry114.skymmo_core.data.item.context.basic.rarity.ItemRarityModule;
+import com.github.mry114.skymmo_core.data.item.context.skill.ItemSkillModule;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -45,6 +46,7 @@ public abstract class ArmorItem implements IEquipmentItem, ICustomItemRequiremen
                 ItemNameModule.getInstance(),
                 ItemBaseStatusModule.getInstance(),
                 ItemAttributeModule.getInstance(),
+                ItemSkillModule.getInstance(),
                 ItemRarityModule.getInstance()
         );
     }

@@ -1,6 +1,6 @@
 package com.github.mry114.skymmo_core.core.item.factory;
 
-import com.github.mry114.skymmo_core.api.item.diff.ICustomItem;
+import com.github.mry114.skymmo_core.api.item.ICustomItem;
 import com.github.mry114.skymmo_core.api.item.module.IItemModule;
 import com.github.mry114.skymmo_core.core.item.context.ItemContext;
 import com.github.mry114.skymmo_core.core.item.context.ItemGeneratorContext;

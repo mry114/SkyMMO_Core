@@ -1,6 +1,6 @@
 package com.github.mry114.skymmo_core.data.item.context.basic.equipment.base_status;
 
-import com.github.mry114.skymmo_core.api.item.diff.ICustomItem;
+import com.github.mry114.skymmo_core.api.item.ICustomItem;
 import com.github.mry114.skymmo_core.api.item.diff.equipment.IEquipmentItem;
 import com.github.mry114.skymmo_core.api.item.module.IItemModule;
 import com.github.mry114.skymmo_core.api.item.module.processor.IItemCalculator;

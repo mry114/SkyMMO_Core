@@ -1,4 +1,4 @@
-package com.github.mry114.skymmo_core.api.item.diff;
+package com.github.mry114.skymmo_core.api.item;
 
 import com.github.mry114.skymmo_core.api.type.IItemType;
 import com.github.mry114.skymmo_core.data.item.Rarity;
@@ -11,12 +11,12 @@ import java.util.List;
 
 public interface ICustomItem {
     /**
-     * アイテムのIdを返します。
+     * アイテムのIdを返します
      */
     int getId();
 
     /**
-     * アイテムの名前を返します。
+     * アイテムの名前を返します
      */
     @NotNull Component getName();
 
@@ -26,17 +26,17 @@ public interface ICustomItem {
     @NotNull Material getMaterial();
 
     /**
-     * アイテムのRarityを返します。
+     * アイテムのRarityを返します
      */
     @NotNull Rarity getRarity();
 
     /**
-     * アイテムのItemTypeを返します。
+     * アイテムのItemTypeを返します
      */
     @NotNull IItemType getItemType();
 
     /**
-     * アイテムを生成するときに、ItemStackに固める時の処理にどのProcessorを要求するかを返します。
+     * アイテムを生成するときに、ItemStackに固める時の処理にどのProcessorを要求するかを返します
      */
     @NotNull List<IItemModule> getProcessorModule();
 }

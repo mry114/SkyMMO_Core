@@ -5,7 +5,7 @@ import com.github.mry114.skymmo_core.data.item.Rarity;
 import com.github.mry114.skymmo_core.data.Status;
 import com.github.mry114.skymmo_core.api.item.diff.can.ItemSkill;
 import com.github.mry114.skymmo_core.api.item.diff.can.UseRequirement;
-import com.github.mry114.skymmo_core.core.item.type.equipment.ArmorItem;
+import com.github.mry114.skymmo_core.core.type.item.ArmorItem;
 import com.github.mry114.skymmo_core.data.item.type.ArmorType;
 import com.github.mry114.skymmo_core.core.status.StatusContainer;
 import net.kyori.adventure.text.Component;
@@ -61,7 +61,7 @@ public class ExampleArmor extends ArmorItem {
     }
 
     @Override
-    public @NotNull List<Component> getLore() {
+    public @NotNull List<Component> getEquipmentLore() {
         return List.of(
                 Component.text("作成例です")
         );

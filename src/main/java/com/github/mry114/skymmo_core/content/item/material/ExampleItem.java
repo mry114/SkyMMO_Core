@@ -2,7 +2,7 @@ package com.github.mry114.skymmo_core.content.item.material;
 
 import com.github.mry114.skymmo_core.api.type.IItemType;
 import com.github.mry114.skymmo_core.data.item.Rarity;
-import com.github.mry114.skymmo_core.core.item.type.MaterialItem;
+import com.github.mry114.skymmo_core.core.type.item.MaterialItem;
 import com.github.mry114.skymmo_core.data.item.type.MaterialType;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;

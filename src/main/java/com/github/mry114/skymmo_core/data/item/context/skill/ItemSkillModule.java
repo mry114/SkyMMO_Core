@@ -1,6 +1,6 @@
 package com.github.mry114.skymmo_core.data.item.context.skill;
 
-import com.github.mry114.skymmo_core.api.item.diff.ICustomItem;
+import com.github.mry114.skymmo_core.api.item.ICustomItem;
 import com.github.mry114.skymmo_core.api.item.diff.can.IItemSkill;
 import com.github.mry114.skymmo_core.api.item.diff.capa.ICustomItemSkill;
 import com.github.mry114.skymmo_core.api.item.module.IItemModule;

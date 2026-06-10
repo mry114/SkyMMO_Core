@@ -1,7 +1,7 @@
 package com.github.mry114.skymmo_core.api.player;
 
 import com.github.mry114.skymmo_core.api.system.IIgniterEvent;
-import com.github.mry114.skymmo_core.core.player.StatusModify;
+import com.github.mry114.skymmo_core.core.player.element.StatusModify;
 
 import java.util.List;
 

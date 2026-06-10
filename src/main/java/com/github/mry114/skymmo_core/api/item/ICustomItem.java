@@ -33,7 +33,7 @@ public interface ICustomItem {
     /**
      * アイテムのItemTypeを返します
      */
-    @NotNull IItemType getItemType();
+    @NotNull IItemType<?> getItemType();
 
     /**
      * アイテムを生成するときに、ItemStackに固める時の処理にどのProcessorを要求するかを返します

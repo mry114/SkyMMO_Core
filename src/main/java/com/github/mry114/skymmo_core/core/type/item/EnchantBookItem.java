@@ -1,4 +1,4 @@
-package com.github.mry114.skymmo_core.core.type;
+package com.github.mry114.skymmo_core.core.type.item;
 
 import com.github.mry114.skymmo_core.api.item.ICustomItem;
 import com.github.mry114.skymmo_core.api.item.diff.capa.ICustomItemEnchant;
@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class EnchantBook implements ICustomItem, ICustomItemEnchant {
+public class EnchantBookItem implements ICustomItem, ICustomItemEnchant {
     @Override
     public @NotNull List<IEnchantType<? extends Enum<?>>> canEnchantType() {
         return List.of();

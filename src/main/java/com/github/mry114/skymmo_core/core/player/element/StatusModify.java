@@ -1,4 +1,4 @@
-package com.github.mry114.skymmo_core.core.player;
+package com.github.mry114.skymmo_core.core.player.element;
 
 import com.github.mry114.skymmo_core.data.player.PlayerStatus;
 

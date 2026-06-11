@@ -23,7 +23,7 @@ public class EnchantBookItem implements ICustomItem, ICustomItemEnchant {
 
     @Override
     public int getId() {
-        return 300_001;
+        return 3_000_001;
     }
 
     @Override

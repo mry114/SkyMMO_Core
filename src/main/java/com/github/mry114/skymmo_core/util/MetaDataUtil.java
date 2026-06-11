@@ -13,10 +13,6 @@ public record MetaDataUtil(ItemMeta meta, ItemStack item) {
         this(item.getItemMeta(), item);
     }
 
-    public MetaDataUtil(@NotNull ItemMeta meta) {
-        this(meta, null);
-    }
-
     public void setDisplayName(Component displayName) {
         meta.displayName(displayName);
     }

@@ -59,7 +59,7 @@ public class ExampleWeapon extends WeaponItem {
 
                     @Override
                     public boolean getSkillCanUse(Player player) {
-                        return false;
+                        return true;
                     }
                 });
     }
@@ -82,7 +82,7 @@ public class ExampleWeapon extends WeaponItem {
 
     @Override
     public int getId() {
-        return 100_000;
+        return 1_000_000;
     }
 
     @Override

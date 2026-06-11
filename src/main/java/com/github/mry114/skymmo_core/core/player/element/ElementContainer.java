@@ -1,6 +1,4 @@
-package com.github.mry114.skymmo_core.core.player;
-
-import com.github.mry114.skymmo_core.api.player.ElementData;
+package com.github.mry114.skymmo_core.core.player.element;
 
 import java.util.*;
 

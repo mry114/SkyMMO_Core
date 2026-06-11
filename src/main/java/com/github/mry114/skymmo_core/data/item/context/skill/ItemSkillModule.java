@@ -31,6 +31,7 @@ public class ItemSkillModule implements IItemModule {
     public @Nullable IItemProcessor getItemProcessor() {
         return logic;
     }
+
     private static class ItemSkillLogic implements IItemProcessor {
 
         @Override
@@ -56,7 +57,5 @@ public class ItemSkillModule implements IItemModule {
                 meta.setItemMeta();
             }
         }
-
-
     }
 }

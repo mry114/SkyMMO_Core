@@ -42,6 +42,7 @@ public class EventListener implements Listener {
 
     @EventHandler
     private void onPlayerInteract(PlayerInteractEvent event) {
+        Player player = event.getPlayer();
         if (event.getAction() != Action.RIGHT_CLICK_AIR && event.getAction() != Action.RIGHT_CLICK_BLOCK) {
             return;
         }
@@ -63,6 +64,7 @@ public class EventListener implements Listener {
         var itemSkill = skill.getItemSkill();
         if (itemSkill != null) {
             if (!itemSkill.getSkillCanUse(event.getPlayer())) return;
+            player.sendMessage("test");
             itemSkill.onSkillAction(event);
         }
     }

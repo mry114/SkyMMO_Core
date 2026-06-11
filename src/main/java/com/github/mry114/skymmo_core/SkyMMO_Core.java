@@ -1,6 +1,6 @@
 package com.github.mry114.skymmo_core;
 
-import com.github.mry114.skymmo_core.core.player.ElementContainer;
+import com.github.mry114.skymmo_core.core.player.element.ElementContainer;
 import com.github.mry114.skymmo_core.listener.EventListener;
 import org.bukkit.plugin.java.JavaPlugin;
 

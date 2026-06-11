@@ -1,5 +1,6 @@
 package com.github.mry114.skymmo_core.api.enchant;
 
+import com.github.mry114.skymmo_core.core.player.element.ElementData;
 import net.kyori.adventure.text.Component;
 import org.jetbrains.annotations.NotNull;
 
@@ -11,4 +12,8 @@ public interface IEnchant {
     @NotNull Component getEnchantName();
 
     @NotNull List<Component> getEnchantLore();
+
+    int getMaxLevel();
+
+    @NotNull List<ElementData> getElements();
 }

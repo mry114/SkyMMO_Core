@@ -69,7 +69,7 @@ public class ExampleArmor extends ArmorItem {
 
     @Override
     public int getId() {
-        return 200_000;
+        return 2_000_000;
     }
 
     @Override

@@ -1,8 +1,9 @@
 package com.github.mry114.skymmo_core.content.item.armor;
 
 import com.github.mry114.skymmo_core.api.type.IItemType;
+import com.github.mry114.skymmo_core.core.player.element.ElementData;
 import com.github.mry114.skymmo_core.data.item.Rarity;
-import com.github.mry114.skymmo_core.data.Status;
+import com.github.mry114.skymmo_core.data.status.Status;
 import com.github.mry114.skymmo_core.api.item.diff.can.ItemSkill;
 import com.github.mry114.skymmo_core.api.item.diff.can.UseRequirement;
 import com.github.mry114.skymmo_core.core.type.item.ArmorItem;
@@ -90,5 +91,10 @@ public class ExampleArmor extends ArmorItem {
     @Override
     public @NotNull IItemType<ArmorType> getItemType() {
         return ArmorType.CHESTPLATE;
+    }
+
+    @Override
+    public @NotNull List<ElementData> getPassiveElementData() {
+        return List.of();
     }
 }

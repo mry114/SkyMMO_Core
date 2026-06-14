@@ -9,7 +9,7 @@ public class ElementContainer {
      * プレイヤーのElementリストを取得する（安全な空のリストを返す）
      */
     public List<ElementData> getPlayerElementList(UUID uuid) {
-        return this.elementMap.getOrDefault(uuid, new ArrayList<>());
+        return this.elementMap.getOrDefault(uuid, List.of());
     }
 
     /**
@@ -20,20 +20,6 @@ public class ElementContainer {
     }
 
     /**
-     * プレイヤーから特定のElementを削除する（リストが存在するときだけ処理する）
-     */
-    public void removeElement(UUID uuid, ElementData statusElement) {
-        List<ElementData> list = this.elementMap.get(uuid);
-        if (list != null) {
-            list.remove(statusElement);
-
-            if (list.isEmpty()) {
-                this.elementMap.remove(uuid);
-            }
-        }
-    }
-
-    /**
      * プレイヤーの新規領域を作成します
      */
     public void createPlayer(UUID uuid) {
@@ -41,7 +27,14 @@ public class ElementContainer {
     }
 
     /**
-     * プレイヤーがログアウトした時にデータを完全に消去する（メモリリーク対策）
+     * プレイヤーがの持つデータを完全に消去する
+     */
+    public void removeElements(UUID uuid) {
+        this.elementMap.get(uuid).clear();
+    }
+
+    /**
+     * プレイヤーが自体のデータを完全に消去する
      */
     public void removePlayer(UUID uuid) {
         this.elementMap.remove(uuid);

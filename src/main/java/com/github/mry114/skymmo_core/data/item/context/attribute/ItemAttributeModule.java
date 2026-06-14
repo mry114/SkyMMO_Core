@@ -8,7 +8,7 @@ import com.github.mry114.skymmo_core.api.item.module.processor.IItemProcessor;
 import com.github.mry114.skymmo_core.api.item.module.processor.IItemReader;
 import com.github.mry114.skymmo_core.api.item.module.processor.IItemUpdater;
 import com.github.mry114.skymmo_core.core.item.context.*;
-import com.github.mry114.skymmo_core.data.Status;
+import com.github.mry114.skymmo_core.data.status.Status;
 import com.github.mry114.skymmo_core.registry.ItemAttributeRegistry;
 import com.github.mry114.skymmo_core.util.MetaDataUtil;
 import com.github.mry114.skymmo_core.util.pdc.PDCWrapper;

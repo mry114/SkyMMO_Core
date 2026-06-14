@@ -1,8 +1,9 @@
 package com.github.mry114.skymmo_core.content.item.weapon;
 
 import com.github.mry114.skymmo_core.api.type.IItemType;
+import com.github.mry114.skymmo_core.core.player.element.ElementData;
 import com.github.mry114.skymmo_core.data.item.Rarity;
-import com.github.mry114.skymmo_core.data.Status;
+import com.github.mry114.skymmo_core.data.status.Status;
 import com.github.mry114.skymmo_core.api.item.diff.can.ItemSkill;
 import com.github.mry114.skymmo_core.api.item.diff.can.UseRequirement;
 import com.github.mry114.skymmo_core.core.type.item.WeaponItem;
@@ -47,14 +48,29 @@ public class ExampleWeapon extends WeaponItem {
                     @Override
                     public void onSkillAction(PlayerInteractEvent event) {
                         Player player = event.getPlayer();
-                        Location loc = player.getLocation();
+                        Location startLoc = player.getLocation(); // 元の位置
+                        Vector direction = startLoc.getDirection();
 
-                        Vector direction = loc.getDirection();
-                        Vector blocksAhead = direction.multiply(5);
+                        org.bukkit.util.RayTraceResult rayTrace = startLoc.getWorld().rayTraceBlocks(
+                                startLoc,
+                                direction,
+                                5.0,
+                                org.bukkit.FluidCollisionMode.NEVER,
+                                true
+                        );
 
-                        Location tpLocation = loc.add(blocksAhead);
+                        Location tpLocation;
+
+                        if (rayTrace != null && rayTrace.getHitBlock() != null) {
+                            tpLocation = rayTrace.getHitPosition().toLocation(startLoc.getWorld());
+                            tpLocation.subtract(direction.normalize().multiply(0.5));
+                            tpLocation.setDirection(direction);
+                        } else {
+                            tpLocation = startLoc.clone().add(direction.multiply(5));
+                        }
+
                         player.teleport(tpLocation);
-                        loc.getWorld().createExplosion(loc, 4.0F, false, false);
+                        tpLocation.getWorld().createExplosion(tpLocation, 0.0F);
                     }
 
                     @Override
@@ -103,5 +119,10 @@ public class ExampleWeapon extends WeaponItem {
     @Override
     public @NotNull IItemType<WeaponType> getItemType() {
         return WeaponType.SWORD;
+    }
+
+    @Override
+    public @NotNull List<ElementData> getPassiveElementData() {
+        return List.of();
     }
 }

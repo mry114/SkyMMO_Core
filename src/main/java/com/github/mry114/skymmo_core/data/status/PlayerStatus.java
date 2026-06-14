@@ -1,9 +1,8 @@
-package com.github.mry114.skymmo_core.data.player;
+package com.github.mry114.skymmo_core.data.status;
 
-import com.github.mry114.skymmo_core.api.type.status.IPlayerStatus;
 import org.jetbrains.annotations.NotNull;
 
-public enum PlayerStatus implements IPlayerStatus<PlayerStatus> {
+public enum PlayerStatus {
     ATTACK("Attack Damage", false),
     DEFENSE("Defense", false),
     HP("HP", false),
@@ -14,17 +13,17 @@ public enum PlayerStatus implements IPlayerStatus<PlayerStatus> {
     CRITICAL_CHANCE("Critical Chance", true),
 
     //採掘
-    MINING_FORTUNE("Mining Fortune", false),
+    MINING_BONUS("Mining Bonus", false),
     MINING_POWER("Mining Power", false),
 
     //農業
-    FARMING_FORTUNE("Farming Fortune", false),
+    FARMING_BONUS("Farming Bonus", false),
 
     //林業
-    FORAGING_FORTUNE("Foraging Fortune", false),
+    FORAGING_BONUS("Foraging Bonus", false),
 
     //釣り
-    FISHING_FORTUNE("Fishing Fortune", false),
+    FISHING_BONUS("Fishing Bonus", false),
     FISHING_POWER("Fishing Power", false),
 
     //総合的動作影響
@@ -40,12 +39,10 @@ public enum PlayerStatus implements IPlayerStatus<PlayerStatus> {
         this.isPercent = isPercent;
     }
 
-    @Override
     public @NotNull String getDisplayName() {
         return displayName;
     }
 
-    @Override
     public boolean getIsPercent() {
         return isPercent;
     }

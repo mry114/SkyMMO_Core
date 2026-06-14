@@ -1,4 +1,4 @@
-package com.github.mry114.skymmo_core.data;
+package com.github.mry114.skymmo_core.data.status;
 
 public enum Status {
     //戦闘

@@ -11,7 +11,7 @@ import com.github.mry114.skymmo_core.core.item.context.IItemProcessorContext;
 import com.github.mry114.skymmo_core.core.item.context.IItemReaderContext;
 import com.github.mry114.skymmo_core.core.item.context.ItemGeneratorContext;
 import com.github.mry114.skymmo_core.data.item.context.basic.MainModuleKeys;
-import com.github.mry114.skymmo_core.data.Status;
+import com.github.mry114.skymmo_core.data.status.Status;
 import com.github.mry114.skymmo_core.registry.ItemRegistry;
 import com.github.mry114.skymmo_core.util.MetaDataUtil;
 import com.github.mry114.skymmo_core.util.pdc.PDCWrapper;

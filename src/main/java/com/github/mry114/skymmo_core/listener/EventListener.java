@@ -27,15 +27,18 @@ public class EventListener implements Listener {
     @EventHandler
     private void onPlayerChat(AsyncChatEvent event) {
         String message = PlainTextComponentSerializer.plainText().serialize(event.message());
+        Player player = event.getPlayer();
+
+        ItemGeneratorContext context = new ItemGeneratorContext();
 
         switch (message) {
-            case "[1]" -> {
-                Player player = event.getPlayer();
-
-                ItemGeneratorContext context = new ItemGeneratorContext();
+            case "1" -> {
                 context.put(ItemAttributeModuleKeys.ITEM_ATTRIBUTE, new ExampleAttribute());
-
                 player.getInventory().setItem(0, new CustomItemFactory().create(ItemRegistry.EXAMPLE_WEAPON, context));
+            }
+
+            case "2" -> {
+                player.getInventory().setItem(0, new CustomItemFactory().create(ItemRegistry.ENCHANT_BOOK, context));
             }
         }
     }
@@ -64,7 +67,6 @@ public class EventListener implements Listener {
         var itemSkill = skill.getItemSkill();
         if (itemSkill != null) {
             if (!itemSkill.getSkillCanUse(event.getPlayer())) return;
-            player.sendMessage("test");
             itemSkill.onSkillAction(event);
         }
     }
@@ -98,12 +100,12 @@ public class EventListener implements Listener {
     @EventHandler
     public void onPlayerJoinEvent(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        SkyMMO_Core.modifyContainer.createPlayer(player.getUniqueId());
+        SkyMMO_Core.elementContainer.createPlayer(player.getUniqueId());
     }
 
     @EventHandler
     public void onPlayerLeave(PlayerQuitEvent event) {
         Player player = event.getPlayer();
-        SkyMMO_Core.modifyContainer.removePlayer(player.getUniqueId());
+        SkyMMO_Core.elementContainer.removePlayer(player.getUniqueId());
     }
 }

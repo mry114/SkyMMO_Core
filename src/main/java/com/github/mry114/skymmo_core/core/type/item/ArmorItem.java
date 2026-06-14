@@ -5,6 +5,7 @@ import com.github.mry114.skymmo_core.api.item.diff.can.IUseRequirement;
 import com.github.mry114.skymmo_core.api.item.diff.can.ItemSkill;
 import com.github.mry114.skymmo_core.api.item.diff.can.UseRequirement;
 import com.github.mry114.skymmo_core.api.item.diff.capa.ICustomItemAttribute;
+import com.github.mry114.skymmo_core.api.item.diff.capa.ICustomItemPassive;
 import com.github.mry114.skymmo_core.api.item.diff.capa.ICustomItemRequirement;
 import com.github.mry114.skymmo_core.api.item.diff.capa.ICustomItemSkill;
 import com.github.mry114.skymmo_core.api.item.diff.equipment.IEquipmentItem;
@@ -21,7 +22,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public abstract class ArmorItem implements IEquipmentItem, ICustomItemRequirement, ICustomItemSkill, ICustomItemAttribute {
+public abstract class ArmorItem implements IEquipmentItem, ICustomItemRequirement, ICustomItemSkill, ICustomItemAttribute, ICustomItemPassive {
 
 
     private final UseRequirement useRequirement;
@@ -34,7 +35,7 @@ public abstract class ArmorItem implements IEquipmentItem, ICustomItemRequiremen
     }
 
     @Override
-    public @Nullable IUseRequirement getRequirement() {
+    public @NotNull IUseRequirement getRequirement() {
         return useRequirement;
     }
 

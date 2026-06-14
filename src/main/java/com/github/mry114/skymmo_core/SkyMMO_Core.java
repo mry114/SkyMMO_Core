@@ -5,7 +5,7 @@ import com.github.mry114.skymmo_core.listener.EventListener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class SkyMMO_Core extends JavaPlugin {
-    public static ElementContainer modifyContainer;
+    public static ElementContainer elementContainer;
 
     private static SkyMMO_Core instance;
 
@@ -19,7 +19,7 @@ public final class SkyMMO_Core extends JavaPlugin {
         // Plugin startup logic
         getServer().getPluginManager().registerEvents(new EventListener(), this);
 
-        modifyContainer = new ElementContainer();
+        elementContainer = new ElementContainer();
     }
 
     @Override

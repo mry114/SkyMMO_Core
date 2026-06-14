@@ -1,6 +1,6 @@
 package com.github.mry114.skymmo_core.core.status;
 
-import com.github.mry114.skymmo_core.data.Status;
+import com.github.mry114.skymmo_core.data.status.Status;
 
 import java.util.Collections;
 import java.util.EnumMap;
@@ -19,7 +19,7 @@ public record StatusContainer(Map<Status, Double> stats) {
         return stats.getOrDefault(type, 0.0);
     }
 
-    public StatusContainer marge(StatusContainer other) {
+    public StatusContainer merge(StatusContainer other) {
         Map<Status, Double> newStats = new EnumMap<>(Status.class);
 
         for (Status type : Status.values()) {

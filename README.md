@@ -19,26 +19,3 @@ SkyMMO_Coreは、Minecraftサーバー向けのMMO要素や高度なカスタム
     * カスタムアイテムやカスタム属性を動的に登録・一元管理。
 
 ---
-
-## 📁 プロジェクト構造 (Package Structure)
-
-```text
-com.github.mry114.skymmo_core
-├── SkyMMO_Core.class             # プラグインのメインクラス
-├── api/                          # 開発者向けの拡張用APIインターフェース群
-│   ├── attribute/                # 属性API (IAttribute)
-│   ├── item/                     # カスタムアイテム・装備品API (ICustomItem, IEquipmentItem)
-│   ├── module/                   # コンテキスト・計算用プロセッサモジュール
-│   └── type/                     # グループ・タイプ定義
-├── content/                      # 実際のゲーム内の定義
-│   ├── attribute/                # 修飾子の登録サンプルコード
-│   └── item/                     # アイテムの登録サンプルコード (ExampleWeapon, ExampleArmor 等)
-├── core/                         # APIのコア実装
-│   ├── context/                  # コンテキストの実装 (ItemContext, ItemGeneratorContext 等)
-│   └── item/                     # 各種アイテムタイプの実装 (WeaponItem, ArmorItem 等)
-├── data/                         # プラグイン内部の標準データ・ロジック・サンプル
-│   ├── context/                  # 各種モジュールロジック (Name, Rarity, Skill, BaseStatus)
-│   └── type/                     # Enum類 (Rarity, Status, ArmorType, WeaponType 等)
-├── listener/                     # サーバーイベントハンドリング (EventListener)
-├── registry/                     # レジストリ (ItemRegistry, ItemAttributeRegistry)
-└── util/                         # ユーティリティクラス群 (MetaDataUtil, PDCWrapper, DisplayStatusUtil)

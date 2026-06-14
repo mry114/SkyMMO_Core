@@ -1,14 +1,32 @@
 package com.github.mry114.skymmo_core.content.enchant;
 
+import com.github.mry114.skymmo_core.core.player.element.ElementData;
+import com.github.mry114.skymmo_core.core.player.modify.StatusModify;
 import com.github.mry114.skymmo_core.core.type.enchant.Enchant;
+import com.github.mry114.skymmo_core.data.status.PlayerStatus;
 import net.kyori.adventure.text.Component;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
 public class ExampleEnchant extends Enchant {
     public ExampleEnchant() {
-        super(List.of());
+        super(List.of(
+                new ElementData() {
+                    @Override
+                    public void playerAttackedEntityEvent(EntityDamageByEntityEvent event) {
+                        super.playerAttackedEntityEvent(event);
+                    }
+
+                    @Override
+                    public List<StatusModify> getStatusModify() {
+                        return List.of(
+                                new StatusModify(StatusModify.Operator.ADDITION, PlayerStatus.ATTACK, 30.0)
+                        );
+                    }
+                }
+        ));
     }
 
     @Override
@@ -24,7 +42,7 @@ public class ExampleEnchant extends Enchant {
     @Override
     public @NotNull List<Component> getEnchantLore() {
         return List.of(
-                Component.text("テスト用のエンチャント")
+                Component.text("テスト用エンチャント")
         );
     }
 

@@ -20,6 +20,9 @@ public class ItemRegistry {
     // 防具
     public static final ICustomItem EXAMPLE_ARMOR  = register(new ExampleArmor());
 
+    // 特殊アイテム
+    public static final ICustomItem ENCHANT_BOOK  = register(new ExampleArmor());
+
 
     private static <T extends ICustomItem> T register(T item) {
         REGISTRY.put(item.getId(), item);

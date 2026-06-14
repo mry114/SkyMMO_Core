@@ -2,11 +2,11 @@ package com.github.mry114.skymmo_core.api.item.diff.capa;
 
 import com.github.mry114.skymmo_core.api.item.ICustomItem;
 import com.github.mry114.skymmo_core.api.item.diff.can.IUseRequirement;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 
 public interface ICustomItemRequirement extends ICustomItem {
     /**
      * アイテムの使用条件の定義を返します
      */
-    @Nullable IUseRequirement getRequirement();
+    @NotNull IUseRequirement getRequirement();
 }

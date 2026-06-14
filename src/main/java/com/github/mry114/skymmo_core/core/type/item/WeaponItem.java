@@ -4,13 +4,11 @@ import com.github.mry114.skymmo_core.api.item.diff.can.IItemSkill;
 import com.github.mry114.skymmo_core.api.item.diff.can.IUseRequirement;
 import com.github.mry114.skymmo_core.api.item.diff.can.ItemSkill;
 import com.github.mry114.skymmo_core.api.item.diff.can.UseRequirement;
-import com.github.mry114.skymmo_core.api.item.diff.capa.ICustomItemAttribute;
-import com.github.mry114.skymmo_core.api.item.diff.capa.ICustomItemPassive;
-import com.github.mry114.skymmo_core.api.item.diff.capa.ICustomItemRequirement;
-import com.github.mry114.skymmo_core.api.item.diff.capa.ICustomItemSkill;
+import com.github.mry114.skymmo_core.api.item.diff.capa.*;
 import com.github.mry114.skymmo_core.api.item.diff.equipment.IEquipmentItem;
 import com.github.mry114.skymmo_core.api.item.module.IItemModule;
 import com.github.mry114.skymmo_core.api.type.IAttributeType;
+import com.github.mry114.skymmo_core.api.type.IItemType;
 import com.github.mry114.skymmo_core.data.attribute.AttributeType;
 import com.github.mry114.skymmo_core.data.item.context.attribute.ItemAttributeModule;
 import com.github.mry114.skymmo_core.data.item.context.basic.equipment.base_status.ItemBaseStatusModule;
@@ -22,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public abstract class WeaponItem implements IEquipmentItem, ICustomItemRequirement, ICustomItemSkill, ICustomItemAttribute, ICustomItemPassive {
+public abstract class WeaponItem implements IEquipmentItem, ICustomItemRequirement, ICustomItemSkill, ICustomItemAttribute, ICustomItemPassive, ICustomItemEnchant {
 
     private final UseRequirement useRequirement;
 

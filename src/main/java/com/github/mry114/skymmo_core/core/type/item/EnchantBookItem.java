@@ -3,7 +3,6 @@ package com.github.mry114.skymmo_core.core.type.item;
 import com.github.mry114.skymmo_core.api.item.ICustomItem;
 import com.github.mry114.skymmo_core.api.item.diff.capa.ICustomItemEnchant;
 import com.github.mry114.skymmo_core.api.item.module.IItemModule;
-import com.github.mry114.skymmo_core.api.type.IEnchantType;
 import com.github.mry114.skymmo_core.api.type.IItemType;
 import com.github.mry114.skymmo_core.data.item.Rarity;
 import com.github.mry114.skymmo_core.data.item.context.basic.name.ItemNameModule;
@@ -16,10 +15,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class EnchantBookItem implements ICustomItem, ICustomItemEnchant {
-    @Override
-    public @NotNull List<IEnchantType<? extends Enum<?>>> canEnchantType() {
-        return List.of();
-    }
 
     @Override
     public int getId() {

@@ -4,16 +4,12 @@ import com.github.mry114.skymmo_core.api.type.IItemType;
 import com.github.mry114.skymmo_core.core.player.element.ElementData;
 import com.github.mry114.skymmo_core.core.player.modify.StatusModify;
 import com.github.mry114.skymmo_core.core.type.enchant.Enchant;
-import com.github.mry114.skymmo_core.data.item.ItemGroup;
-import com.github.mry114.skymmo_core.data.item.type.EnchantBookType;
-import com.github.mry114.skymmo_core.data.item.type.WeaponType;
-import com.github.mry114.skymmo_core.data.status.PlayerStatus;
+import com.github.mry114.skymmo_core.model.item.ItemGroup;
+import com.github.mry114.skymmo_core.model.status.PlayerStatus;
 import net.kyori.adventure.text.Component;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ExampleEnchant extends Enchant {

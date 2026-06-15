@@ -1,6 +1,6 @@
 package com.github.mry114.skymmo_core.util.status;
 
-import com.github.mry114.skymmo_core.data.status.Status;
+import com.github.mry114.skymmo_core.model.status.Status;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.format.TextDecoration;

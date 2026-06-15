@@ -1,6 +1,6 @@
 package com.github.mry114.skymmo_core.core.status;
 
-import com.github.mry114.skymmo_core.data.status.PlayerStatus;
+import com.github.mry114.skymmo_core.model.status.PlayerStatus;
 
 import java.util.Collections;
 import java.util.EnumMap;

@@ -5,7 +5,7 @@ import com.github.mry114.skymmo_core.api.item.module.IItemModule;
 import com.github.mry114.skymmo_core.core.item.context.ItemContext;
 import com.github.mry114.skymmo_core.core.item.context.ItemGeneratorContext;
 import com.github.mry114.skymmo_core.core.item.context.ItemUpdaterContext;
-import com.github.mry114.skymmo_core.data.item.context.basic.MainModuleKeys;
+import com.github.mry114.skymmo_core.handler.item.context.MainModuleKeys;
 import com.github.mry114.skymmo_core.registry.ItemRegistry;
 import com.github.mry114.skymmo_core.util.pdc.PDCWrapper;
 import org.bukkit.inventory.ItemStack;

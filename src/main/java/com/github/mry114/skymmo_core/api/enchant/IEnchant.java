@@ -8,12 +8,18 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public interface IEnchant {
+    /**
+     * 最大値は999,999までのエンチャントのidを返します
+     */
     int getId();
 
     @NotNull Component getEnchantName();
 
     @NotNull List<Component> getEnchantLore();
 
+    /**
+     * 最大値は999までのエンチャントのレベル上限を返します
+     */
     int getMaxLevel();
 
     @NotNull List<ElementData> getElements();

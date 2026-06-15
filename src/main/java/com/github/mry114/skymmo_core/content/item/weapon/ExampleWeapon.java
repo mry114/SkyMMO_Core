@@ -2,12 +2,12 @@ package com.github.mry114.skymmo_core.content.item.weapon;
 
 import com.github.mry114.skymmo_core.api.type.IItemType;
 import com.github.mry114.skymmo_core.core.player.element.ElementData;
-import com.github.mry114.skymmo_core.data.item.Rarity;
-import com.github.mry114.skymmo_core.data.status.Status;
+import com.github.mry114.skymmo_core.model.item.Rarity;
+import com.github.mry114.skymmo_core.model.status.Status;
 import com.github.mry114.skymmo_core.api.item.diff.can.ItemSkill;
 import com.github.mry114.skymmo_core.api.item.diff.can.UseRequirement;
 import com.github.mry114.skymmo_core.core.type.item.WeaponItem;
-import com.github.mry114.skymmo_core.data.item.type.WeaponType;
+import com.github.mry114.skymmo_core.model.item.type.WeaponType;
 import com.github.mry114.skymmo_core.core.status.StatusContainer;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;

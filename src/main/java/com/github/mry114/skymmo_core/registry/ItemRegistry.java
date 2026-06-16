@@ -1,36 +1,49 @@
 package com.github.mry114.skymmo_core.registry;
 
 import com.github.mry114.skymmo_core.api.item.ICustomItem;
-import com.github.mry114.skymmo_core.content.item.armor.ExampleArmor;
-import com.github.mry114.skymmo_core.content.item.weapon.ExampleWeapon;
-import com.github.mry114.skymmo_core.content.item.material.ExampleItem;
-import com.github.mry114.skymmo_core.core.type.item.EnchantBookItem;
+import io.github.classgraph.ClassGraph;
+import io.github.classgraph.ScanResult;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ItemRegistry {
-    private static final Map<Integer, ICustomItem> REGISTRY = new HashMap<>();
+    private static final ItemRegistry INSTANCE = new ItemRegistry();
 
-    // シンプルアイテム
-    public static final ICustomItem EXAMPLE_ITEM = register(new ExampleItem());
+    public static ItemRegistry getInstance() {
+        return INSTANCE;
+    }
 
-    // 武器
-    public static final ICustomItem EXAMPLE_WEAPON = register(new ExampleWeapon());
+    private final Map<Integer, ICustomItem> registry = new HashMap<>();
 
-    // 防具
-    public static final ICustomItem EXAMPLE_ARMOR  = register(new ExampleArmor());
+    private ItemRegistry() {}
 
-    // 特殊アイテム
-    public static final ICustomItem ENCHANT_BOOK  = register(new EnchantBookItem());
+    public void loadAll(JavaPlugin plugin) {
+        try (ScanResult scanResult = new ClassGraph()
+                .acceptPackages("com.github.mry114.skymmo_core")
+                .scan()) {
 
+            List<Class<ICustomItem>> classes = scanResult
+                    .getClassesImplementing(ICustomItem.class.getName())
+                    .getStandardClasses()
+                    .loadClasses(ICustomItem.class);
 
-    private static <T extends ICustomItem> T register(T item) {
-        REGISTRY.put(item.getId(), item);
-        return item;
+            for (Class<ICustomItem> clazz : classes) {
+                try {
+                    ICustomItem item = clazz.getDeclaredConstructor().newInstance();
+                    this.registry.put(item.getId(), item);
+
+                    plugin.getLogger().info("Sky_MMO_Item: " + clazz.getSimpleName() + " (ID: " + item.getId() + ")");
+                } catch (Exception e) {
+                    plugin.getLogger().severe("クラスの初期化に失敗: " + clazz.getName() + " -> " + e.getMessage());
+                }
+            }
+        }
     }
 
     public static ICustomItem getById(int id) {
-        return REGISTRY.get(id);
+        return INSTANCE.registry.get(id);
     }
 }

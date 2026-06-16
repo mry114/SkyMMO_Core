@@ -1,22 +1,50 @@
 package com.github.mry114.skymmo_core.registry;
 
 import com.github.mry114.skymmo_core.api.attribute.IAttribute;
-import com.github.mry114.skymmo_core.content.attribute.ExampleAttribute;
+import io.github.classgraph.ClassGraph;
+import io.github.classgraph.ScanResult;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.ServiceLoader;
 
 public class AttributeRegistry {
-    private static final Map<Integer, IAttribute> REGISTRY = new HashMap<>();
+    private static final AttributeRegistry INSTANCE = new AttributeRegistry();
 
-    public static final IAttribute EXAMPLE_ATTRIBUTE = register(new ExampleAttribute());
+    public static AttributeRegistry getInstance() {
+        return INSTANCE;
+    }
 
-    private static <T extends IAttribute> T register(T attribute) {
-        REGISTRY.put(attribute.getId(), attribute);
-        return attribute;
+    private final Map<Integer, IAttribute> registry = new HashMap<>();
+
+    private AttributeRegistry() {}
+
+    public void loadAll(JavaPlugin plugin) {
+        try (ScanResult scanResult = new ClassGraph()
+                .acceptPackages("com.github.mry114.skymmo_core")
+                .scan()) {
+
+            List<Class<IAttribute>> classes = scanResult
+                    .getClassesImplementing(IAttribute.class.getName())
+                    .getStandardClasses()
+                    .loadClasses(IAttribute.class);
+
+            for (Class<IAttribute> clazz : classes) {
+                try {
+                    IAttribute attribute = clazz.getDeclaredConstructor().newInstance();
+                    this.registry.put(attribute.getId(), attribute);
+
+                    plugin.getLogger().info("Sky_MMO_Attribute: " + clazz.getSimpleName() + " (ID: " + attribute.getId() + ")");
+                } catch (Exception e) {
+                    plugin.getLogger().severe("クラスの初期化に失敗: " + clazz.getName() + " -> " + e.getMessage());
+                }
+            }
+        }
     }
 
     public static IAttribute getById(int id) {
-        return REGISTRY.get(id);
+        return INSTANCE.registry.get(id);
     }
 }

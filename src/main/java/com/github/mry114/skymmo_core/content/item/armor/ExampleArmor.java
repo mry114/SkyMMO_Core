@@ -32,6 +32,11 @@ public class ExampleArmor extends ArmorItem {
                     public boolean getItemCanUse(Player player) {
                         return true;
                     }
+
+                    @Override
+                    public boolean getExistence() {
+                        return false;
+                    }
                 },
                 new ItemSkill() {
 
@@ -47,6 +52,11 @@ public class ExampleArmor extends ArmorItem {
 
                     @Override
                     public boolean getSkillCanUse(Player player) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean getExistence() {
                         return false;
                     }
                 });
@@ -75,7 +85,7 @@ public class ExampleArmor extends ArmorItem {
 
     @Override
     public @NotNull Component getName() {
-        return Component.text("テストアーマー");
+        return Component.text("TestArmor");
     }
 
     @Override

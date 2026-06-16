@@ -7,5 +7,11 @@ public enum ItemGroup implements IItemGroup<ItemGroup> {
     ENCHANTED_BOOK,
     WEAPON,
     ARMOR,
-    ACCESSORY,
+    ACCESSORY
+    ;
+
+    @Override
+    public String getName() {
+        return name().replace("_", " ");
+    }
 }

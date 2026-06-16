@@ -35,6 +35,11 @@ public class ExampleWeapon extends WeaponItem {
                     public boolean getItemCanUse(Player player) {
                         return true;
                     }
+
+                    @Override
+                    public boolean getExistence() {
+                        return false;
+                    }
                 },
                 new ItemSkill() {
 
@@ -77,6 +82,11 @@ public class ExampleWeapon extends WeaponItem {
                     public boolean getSkillCanUse(Player player) {
                         return true;
                     }
+
+                    @Override
+                    public boolean getExistence() {
+                        return true;
+                    }
                 });
     }
 
@@ -103,7 +113,7 @@ public class ExampleWeapon extends WeaponItem {
 
     @Override
     public @NotNull Component getName() {
-        return Component.text("テストウェポン");
+        return Component.text("TestWeapon");
     }
 
     @Override

@@ -15,7 +15,7 @@ public class ExampleAttribute extends Attribute {
 
     @Override
     public Component getDisplayName() {
-        return Component.text("テスト修飾子");
+        return Component.text("Test");
     }
 
     @Override

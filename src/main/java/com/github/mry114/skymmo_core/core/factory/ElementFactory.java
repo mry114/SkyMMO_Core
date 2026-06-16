@@ -1,4 +1,4 @@
-package com.github.mry114.skymmo_core.core.item.factory;
+package com.github.mry114.skymmo_core.core.factory;
 
 import com.github.mry114.skymmo_core.SkyMMO_Core;
 import com.github.mry114.skymmo_core.api.player.IElementCollectorModule;

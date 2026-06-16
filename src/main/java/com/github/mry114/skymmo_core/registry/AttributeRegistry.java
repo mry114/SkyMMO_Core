@@ -6,16 +6,14 @@ import com.github.mry114.skymmo_core.content.attribute.ExampleAttribute;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ItemAttributeRegistry {
-    public static final IAttribute EXAMPLE_ATTRIBUTE = register(new ExampleAttribute());
-
+public class AttributeRegistry {
     private static final Map<Integer, IAttribute> REGISTRY = new HashMap<>();
 
-    private static <T extends IAttribute> T register(T item) {
-        if (REGISTRY != null) {
-            REGISTRY.put(item.getId(), item);
-        }
-        return item;
+    public static final IAttribute EXAMPLE_ATTRIBUTE = register(new ExampleAttribute());
+
+    private static <T extends IAttribute> T register(T attribute) {
+        REGISTRY.put(attribute.getId(), attribute);
+        return attribute;
     }
 
     public static IAttribute getById(int id) {

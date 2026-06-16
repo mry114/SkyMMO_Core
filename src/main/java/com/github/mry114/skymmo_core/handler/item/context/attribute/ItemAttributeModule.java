@@ -13,7 +13,7 @@ import com.github.mry114.skymmo_core.api.item.module.processor.IItemReader;
 import com.github.mry114.skymmo_core.api.item.module.processor.IItemUpdater;
 import com.github.mry114.skymmo_core.core.item.context.*;
 import com.github.mry114.skymmo_core.model.status.Status;
-import com.github.mry114.skymmo_core.registry.ItemAttributeRegistry;
+import com.github.mry114.skymmo_core.registry.AttributeRegistry;
 import com.github.mry114.skymmo_core.util.MetaDataUtil;
 import com.github.mry114.skymmo_core.util.pdc.PDCWrapper;
 import com.github.mry114.skymmo_core.util.status.DisplayStatusUtil;
@@ -92,7 +92,7 @@ public class ItemAttributeModule implements IItemModule {
         @Override
         public void reader(ICustomItem customItem, ItemStack itemStack, IItemReaderContext context) {
             PDCWrapper pdc = new PDCWrapper(itemStack.getItemMeta());
-            context.put(ItemAttributeModuleKeys.ITEM_ATTRIBUTE, ItemAttributeRegistry.getById(pdc.get(ItemAttributeModuleKeys.PDC_ATTRIBUTE_ID)));
+            context.put(ItemAttributeModuleKeys.ITEM_ATTRIBUTE, AttributeRegistry.getById(pdc.get(ItemAttributeModuleKeys.PDC_ATTRIBUTE_ID)));
         }
 
         @Override

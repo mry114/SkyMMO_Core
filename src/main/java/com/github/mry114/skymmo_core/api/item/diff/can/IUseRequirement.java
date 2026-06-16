@@ -9,4 +9,6 @@ public interface IUseRequirement {
     List<Component> getItemRequirementLore();
 
     boolean getItemCanUse(Player player);
+
+    boolean getExistence();
 }

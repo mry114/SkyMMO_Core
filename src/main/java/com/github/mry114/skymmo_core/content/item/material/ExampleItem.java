@@ -17,7 +17,7 @@ public class ExampleItem extends MaterialItem {
 
     @Override
     public @NotNull Component getName() {
-        return Component.text("テストアイテム");
+        return Component.text("TestItem");
     }
 
     @Override

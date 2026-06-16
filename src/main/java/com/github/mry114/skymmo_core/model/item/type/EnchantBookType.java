@@ -5,8 +5,13 @@ import com.github.mry114.skymmo_core.api.type.IItemType;
 import com.github.mry114.skymmo_core.model.item.ItemGroup;
 
 public enum EnchantBookType implements IItemType<EnchantBookType> {
-    ENCHANT_BOOK_TYPE
+    ENCHANTED_BOOK
     ;
+
+    @Override
+    public String getName() {
+        return name().replace("_", " ");
+    }
 
     @Override
     public IItemGroup<ItemGroup> getItemGroup() {

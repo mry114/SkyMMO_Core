@@ -8,6 +8,11 @@ public enum MaterialType implements IItemType<MaterialType> {
     ITEM;
 
     @Override
+    public String getName() {
+        return name().replace("_", " ");
+    }
+
+    @Override
     public IItemGroup<ItemGroup> getItemGroup() {
         return ItemGroup.ITEM;
     }

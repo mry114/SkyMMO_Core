@@ -13,4 +13,6 @@ public interface IItemSkill {
     void onSkillAction(PlayerInteractEvent event);
 
     boolean getSkillCanUse(Player player);
+
+    boolean getExistence();
 }

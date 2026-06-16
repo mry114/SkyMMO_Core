@@ -11,7 +11,14 @@ public enum WeaponType implements IItemType<WeaponType> {
     STAFF;
 
     @Override
+    public String getName() {
+        return name().replace("_", " ");
+    }
+
+    @Override
     public IItemGroup<ItemGroup> getItemGroup() {
         return ItemGroup.WEAPON;
     }
+
+
 }

@@ -1,9 +1,9 @@
 package com.github.mry114.skymmo_core.handler.pdc.converter;
 
+import com.github.mry114.skymmo_core.api.enchant.IEnchant;
 import com.github.mry114.skymmo_core.api.pdc.IConvertData;
 
 public class EnchantConvertData implements IConvertData<Integer> {
-    private final int idDigit = 6;
     private final int levelDigit = 3;
 
     private int id;
@@ -11,11 +11,16 @@ public class EnchantConvertData implements IConvertData<Integer> {
 
     public EnchantConvertData(int data) {
         this.level = data % (int) Math.pow(10, levelDigit);
-        this.id = data / (int) Math.pow(10, 9 - idDigit);
+        this.id = data / (int) Math.pow(10, levelDigit );
     }
 
     public EnchantConvertData(int id, int level) {
         this.id = id;
+        this.level = level;
+    }
+
+    public EnchantConvertData(IEnchant enchant, int level) {
+        this.id = enchant.getId();
         this.level = level;
     }
 

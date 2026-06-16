@@ -8,6 +8,7 @@ import com.github.mry114.skymmo_core.api.item.diff.capa.*;
 import com.github.mry114.skymmo_core.api.item.diff.equipment.IEquipmentItem;
 import com.github.mry114.skymmo_core.api.item.module.IItemModule;
 import com.github.mry114.skymmo_core.api.type.IAttributeType;
+import com.github.mry114.skymmo_core.handler.item.context.enchant.ItemEnchantModule;
 import com.github.mry114.skymmo_core.model.attribute.AttributeType;
 import com.github.mry114.skymmo_core.handler.item.context.attribute.ItemAttributeModule;
 import com.github.mry114.skymmo_core.handler.item.context.equipment.base_status.ItemBaseStatusModule;
@@ -55,6 +56,7 @@ public abstract class ArmorItem implements IEquipmentItem, ICustomItemRequiremen
                 ItemBaseStatusModule.getInstance(),
                 ItemAttributeModule.getInstance(),
                 ItemSkillModule.getInstance(),
+                ItemEnchantModule.getInstance(),
                 ItemRarityModule.getInstance()
         );
     }

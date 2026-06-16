@@ -11,6 +11,11 @@ public enum ArmorType implements IItemType<ArmorType> {
     BOOTS;
 
     @Override
+    public String getName() {
+        return name().replace("_", " ");
+    }
+
+    @Override
     public IItemGroup<ItemGroup> getItemGroup() {
         return ItemGroup.ARMOR;
     }

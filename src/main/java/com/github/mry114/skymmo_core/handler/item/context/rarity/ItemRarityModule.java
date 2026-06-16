@@ -60,7 +60,7 @@ public class ItemRarityModule implements IItemModule {
             MetaDataUtil meta = new MetaDataUtil(context.getItemStack());
 
             List<Component> lore = new ArrayList<>();
-            lore.add(Component.text(context.get(ItemRarityModuleKeys.ITEM_RARITY).name() + " " + customItem.getItemType().name())
+            lore.add(Component.text(context.get(ItemRarityModuleKeys.ITEM_RARITY).name() + " " + customItem.getItemType().getName())
                     .decorate(TextDecoration.BOLD)
                     .decoration(TextDecoration.ITALIC, false)
                     .color(context.get(ItemRarityModuleKeys.ITEM_RARITY).getColor()));

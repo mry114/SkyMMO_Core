@@ -4,6 +4,7 @@ import com.github.mry114.skymmo_core.api.item.ICustomItem;
 import com.github.mry114.skymmo_core.api.item.diff.capa.ICustomItemEnchant;
 import com.github.mry114.skymmo_core.api.item.module.IItemModule;
 import com.github.mry114.skymmo_core.api.type.IItemType;
+import com.github.mry114.skymmo_core.handler.item.context.enchant.ItemEnchantModule;
 import com.github.mry114.skymmo_core.model.item.Rarity;
 import com.github.mry114.skymmo_core.handler.item.context.name.ItemNameModule;
 import com.github.mry114.skymmo_core.handler.item.context.rarity.ItemRarityModule;
@@ -38,13 +39,14 @@ public class EnchantBookItem implements ICustomItem, ICustomItemEnchant {
 
     @Override
     public @NotNull IItemType<EnchantBookType> getItemType() {
-        return EnchantBookType.ENCHANT_BOOK_TYPE;
+        return EnchantBookType.ENCHANTED_BOOK;
     }
 
     @Override
     public @NotNull List<IItemModule> getProcessorModule() {
         return List.of(
                 ItemNameModule.getInstance(),
+                ItemEnchantModule.getInstance(),
                 ItemRarityModule.getInstance()
         );
     }

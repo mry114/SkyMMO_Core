@@ -36,25 +36,27 @@ public class ItemSkillModule implements IItemModule {
 
         @Override
         public void process(ICustomItem customItem, IItemProcessorContext context) {
-            MetaDataUtil meta = new MetaDataUtil(context.getItemStack());
-
             if (customItem instanceof ICustomItemSkill skill) {
-                IItemSkill itemSkill = skill.getItemSkill();
-                if (itemSkill == null) {
-                    return;
+                if (skill.getItemSkill() == null) return;
+                if (skill.getItemSkill().getExistence()) {
+                    MetaDataUtil meta = new MetaDataUtil(context.getItemStack());
+                    IItemSkill itemSkill = skill.getItemSkill();
+                    if (itemSkill == null) {
+                        return;
+                    }
+
+                    List<Component> allLore = new ArrayList<>(List.of(
+                            Component.text("[", TextColor.color(0xFFFF55)).decorate(TextDecoration.BOLD).decoration(TextDecoration.ITALIC, false)
+                                    .append(Component.text(" Skill Description ", TextColor.color(0xFFAA00)).decoration(TextDecoration.BOLD, false).decoration(TextDecoration.ITALIC, false))
+                                    .append(Component.text("]", TextColor.color(0xFFFF55)).decorate(TextDecoration.BOLD).decoration(TextDecoration.ITALIC, false))
+                    ));
+
+                    allLore.addAll(itemSkill.getSkillLore());
+                    allLore.add(Component.empty());
+
+                    meta.loreAddAll(allLore);
+                    meta.setItemMeta();
                 }
-
-                List<Component> allLore = new ArrayList<>(List.of(
-                        Component.text("[", TextColor.color(0xFFFF55)).decorate(TextDecoration.BOLD).decoration(TextDecoration.ITALIC, false)
-                                .append(Component.text(" Skill Description ", TextColor.color(0xFFAA00)).decoration(TextDecoration.BOLD, false).decoration(TextDecoration.ITALIC, false))
-                                .append(Component.text("]", TextColor.color(0xFFFF55)).decorate(TextDecoration.BOLD).decoration(TextDecoration.ITALIC, false))
-                ));
-
-                allLore.addAll(itemSkill.getSkillLore());
-                allLore.add(Component.empty());
-
-                meta.loreAddAll(allLore);
-                meta.setItemMeta();
             }
         }
     }

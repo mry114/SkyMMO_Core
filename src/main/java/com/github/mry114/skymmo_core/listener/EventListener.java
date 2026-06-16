@@ -2,11 +2,14 @@ package com.github.mry114.skymmo_core.listener;
 
 import com.github.mry114.skymmo_core.SkyMMO_Core;
 import com.github.mry114.skymmo_core.api.item.diff.capa.ICustomItemSkill;
+import com.github.mry114.skymmo_core.content.enchant.ExampleEnchant;
 import com.github.mry114.skymmo_core.core.item.context.ItemGeneratorContext;
-import com.github.mry114.skymmo_core.core.item.factory.CustomItemFactory;
+import com.github.mry114.skymmo_core.core.factory.CustomItemFactory;
 import com.github.mry114.skymmo_core.handler.item.context.attribute.ItemAttributeModuleKeys;
 import com.github.mry114.skymmo_core.handler.item.context.MainModuleKeys;
 import com.github.mry114.skymmo_core.content.attribute.ExampleAttribute;
+import com.github.mry114.skymmo_core.handler.item.context.enchant.ItemEnchantModuleKeys;
+import com.github.mry114.skymmo_core.handler.pdc.converter.EnchantConvertData;
 import com.github.mry114.skymmo_core.registry.ItemRegistry;
 import com.github.mry114.skymmo_core.util.pdc.PDCWrapper;
 import io.papermc.paper.event.player.AsyncChatEvent;
@@ -23,6 +26,8 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.List;
+
 public class EventListener implements Listener {
     @EventHandler
     private void onPlayerChat(AsyncChatEvent event) {
@@ -34,10 +39,35 @@ public class EventListener implements Listener {
         switch (message) {
             case "1" -> {
                 context.put(ItemAttributeModuleKeys.ITEM_ATTRIBUTE, new ExampleAttribute());
+                context.put(ItemEnchantModuleKeys.ITEM_ENCHANT, List.of(
+                        new EnchantConvertData(new ExampleEnchant(), 1)
+                ));
                 player.getInventory().setItem(0, new CustomItemFactory().create(ItemRegistry.EXAMPLE_WEAPON, context));
             }
 
             case "2" -> {
+                context.put(ItemAttributeModuleKeys.ITEM_ATTRIBUTE, new ExampleAttribute());
+                context.put(ItemEnchantModuleKeys.ITEM_ENCHANT, List.of(
+                        new EnchantConvertData(new ExampleEnchant(), 3)
+                ));
+                player.getInventory().setItem(0, new CustomItemFactory().create(ItemRegistry.EXAMPLE_ARMOR, context));
+            }
+
+            case "3" -> {
+                context.put(ItemAttributeModuleKeys.ITEM_ATTRIBUTE, new ExampleAttribute());
+                player.getInventory().setItem(0, new CustomItemFactory().create(ItemRegistry.EXAMPLE_ARMOR, context));
+            }
+
+            case "4" -> {
+                context.put(ItemAttributeModuleKeys.ITEM_ATTRIBUTE, new ExampleAttribute());
+                context.put(ItemEnchantModuleKeys.ITEM_ENCHANT, List.of(
+                        new EnchantConvertData(new ExampleEnchant(), 6)
+                ));
+                player.getInventory().setItem(0, new CustomItemFactory().create(ItemRegistry.ENCHANT_BOOK, context));
+            }
+
+            case "5" -> {
+                context.put(ItemAttributeModuleKeys.ITEM_ATTRIBUTE, new ExampleAttribute());
                 player.getInventory().setItem(0, new CustomItemFactory().create(ItemRegistry.ENCHANT_BOOK, context));
             }
         }

@@ -4,6 +4,7 @@ import com.github.mry114.skymmo_core.api.type.IItemType;
 import com.github.mry114.skymmo_core.core.player.element.ElementData;
 import com.github.mry114.skymmo_core.core.player.modify.StatusModify;
 import com.github.mry114.skymmo_core.core.type.enchant.Enchant;
+import com.github.mry114.skymmo_core.model.enchant.EnchantTier;
 import com.github.mry114.skymmo_core.model.item.ItemGroup;
 import com.github.mry114.skymmo_core.model.status.PlayerStatus;
 import net.kyori.adventure.text.Component;
@@ -38,13 +39,13 @@ public class ExampleEnchant extends Enchant {
 
     @Override
     public @NotNull Component getEnchantName() {
-        return Component.text("テストエンチャント");
+        return Component.text("Test");
     }
 
     @Override
     public @NotNull List<Component> getEnchantLore() {
         return List.of(
-                Component.text("テスト用エンチャント")
+                Component.text("Test")
         );
     }
 
@@ -56,5 +57,10 @@ public class ExampleEnchant extends Enchant {
     @Override
     public boolean getUseTargetTypeBool(IItemType<?> type) {
         return type.getItemGroup() == ItemGroup.ENCHANTED_BOOK || type.getItemGroup() == ItemGroup.WEAPON;
+    }
+
+    @Override
+    public EnchantTier getTier() {
+        return EnchantTier.NORMAL;
     }
 }

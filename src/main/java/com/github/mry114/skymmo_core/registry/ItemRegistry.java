@@ -4,6 +4,7 @@ import com.github.mry114.skymmo_core.api.item.ICustomItem;
 import com.github.mry114.skymmo_core.content.item.armor.ExampleArmor;
 import com.github.mry114.skymmo_core.content.item.weapon.ExampleWeapon;
 import com.github.mry114.skymmo_core.content.item.material.ExampleItem;
+import com.github.mry114.skymmo_core.core.type.item.EnchantBookItem;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +22,7 @@ public class ItemRegistry {
     public static final ICustomItem EXAMPLE_ARMOR  = register(new ExampleArmor());
 
     // 特殊アイテム
-    public static final ICustomItem ENCHANT_BOOK  = register(new ExampleArmor());
+    public static final ICustomItem ENCHANT_BOOK  = register(new EnchantBookItem());
 
 
     private static <T extends ICustomItem> T register(T item) {

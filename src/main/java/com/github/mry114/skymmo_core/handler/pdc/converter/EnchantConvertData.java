@@ -2,6 +2,7 @@ package com.github.mry114.skymmo_core.handler.pdc.converter;
 
 import com.github.mry114.skymmo_core.api.enchant.IEnchant;
 import com.github.mry114.skymmo_core.api.pdc.IConvertData;
+import com.github.mry114.skymmo_core.registry.EnchantRegistry;
 
 public class EnchantConvertData implements IConvertData<Integer> {
     private final int levelDigit = 3;
@@ -30,11 +31,16 @@ public class EnchantConvertData implements IConvertData<Integer> {
     public int getLevel() {
         return level;
     }
+    public IEnchant getEnchant() {
+        return EnchantRegistry.getById(id);
+    }
 
     public void setId(int id) {
         this.id = id;
     }
-
+    public void setId(IEnchant enchant) {
+        this.id = enchant.getId();
+    }
     public void setLevel(int level) {
         this.level = level;
     }

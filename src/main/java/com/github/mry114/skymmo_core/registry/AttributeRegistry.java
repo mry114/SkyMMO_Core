@@ -8,7 +8,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.ServiceLoader;
 
 public class AttributeRegistry {
     private static final AttributeRegistry INSTANCE = new AttributeRegistry();

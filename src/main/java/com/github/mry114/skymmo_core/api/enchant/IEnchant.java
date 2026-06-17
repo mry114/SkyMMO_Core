@@ -23,7 +23,7 @@ public interface IEnchant {
      */
     int getMaxLevel();
 
-    @NotNull List<ElementData> getElements();
+    @NotNull List<ElementData> getElements(int level);
 
     boolean getUseTargetTypeBool(IItemType<?> type);
 

@@ -4,6 +4,8 @@ import com.github.mry114.skymmo_core.SkyMMO_Core;
 import com.github.mry114.skymmo_core.api.item.diff.capa.ICustomItemSkill;
 import com.github.mry114.skymmo_core.content.enchant.ExampleEnchant;
 import com.github.mry114.skymmo_core.content.item.armor.ExampleArmor;
+import com.github.mry114.skymmo_core.content.item.enchant_book.NormalEnchantBook;
+import com.github.mry114.skymmo_core.content.item.enchant_book.UltimateEnchantBook;
 import com.github.mry114.skymmo_core.content.item.weapon.ExampleWeapon;
 import com.github.mry114.skymmo_core.core.item.context.ItemGeneratorContext;
 import com.github.mry114.skymmo_core.core.factory.CustomItemFactory;
@@ -66,12 +68,12 @@ public class EventListener implements Listener {
                 context.put(ItemEnchantModuleKeys.ITEM_ENCHANT, List.of(
                         new EnchantConvertData(new ExampleEnchant(), 6)
                 ));
-                player.getInventory().setItem(0, new CustomItemFactory().create(new EnchantBookItem(), context));
+                player.getInventory().setItem(0, new CustomItemFactory().create(new NormalEnchantBook(), context));
             }
 
             case "5" -> {
                 context.put(ItemAttributeModuleKeys.ITEM_ATTRIBUTE, new ExampleAttribute());
-                player.getInventory().setItem(0, new CustomItemFactory().create(new EnchantBookItem(), context));
+                player.getInventory().setItem(0, new CustomItemFactory().create(new UltimateEnchantBook(), context));
             }
         }
     }

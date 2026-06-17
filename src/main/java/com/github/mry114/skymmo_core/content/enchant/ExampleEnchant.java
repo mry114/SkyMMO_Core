@@ -7,6 +7,7 @@ import com.github.mry114.skymmo_core.core.type.enchant.Enchant;
 import com.github.mry114.skymmo_core.model.enchant.EnchantTier;
 import com.github.mry114.skymmo_core.model.item.ItemGroup;
 import com.github.mry114.skymmo_core.model.status.PlayerStatus;
+import com.github.mry114.skymmo_core.util.Operator;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -15,23 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class ExampleEnchant extends Enchant {
-    public ExampleEnchant() {
-        super(List.of(
-                new ElementData() {
-                    @Override
-                    public void playerAttackedEntityEvent(EntityDamageByEntityEvent event) {
-                        super.playerAttackedEntityEvent(event);
-                    }
-
-                    @Override
-                    public List<StatusModify> getStatusModify() {
-                        return List.of(
-                                new StatusModify(StatusModify.Operator.ADDITION, PlayerStatus.ATTACK, 30.0)
-                        );
-                    }
-                }
-        ));
-    }
 
     @Override
     public int getId() {
@@ -53,6 +37,25 @@ public class ExampleEnchant extends Enchant {
     @Override
     public int getMaxLevel() {
         return 6;
+    }
+
+    @Override
+    public @NotNull List<ElementData> getElements(int level) {
+        return List.of(
+                new ElementData() {
+                    @Override
+                    public void playerAttackedEntityEvent(EntityDamageByEntityEvent event) {
+                        super.playerAttackedEntityEvent(event);
+                    }
+
+                    @Override
+                    public List<StatusModify> getStatusModify() {
+                        return List.of(
+                                new StatusModify(Operator.ADDITION, PlayerStatus.ATTACK, 30.0 * level)
+                        );
+                    }
+                }
+        );
     }
 
     @Override

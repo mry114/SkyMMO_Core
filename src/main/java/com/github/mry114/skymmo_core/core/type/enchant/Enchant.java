@@ -7,14 +7,4 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public abstract class Enchant implements IEnchant {
-    private final List<ElementData> data;
-
-    public Enchant(List<ElementData> data) {
-        this.data = data;
-    }
-
-    @Override
-    public @NotNull List<ElementData> getElements() {
-        return data;
-    }
 }

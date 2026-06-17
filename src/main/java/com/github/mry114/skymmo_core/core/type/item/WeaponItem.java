@@ -20,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public abstract class WeaponItem implements IEquipmentItem, ICustomItemRequirement, ICustomItemSkill, ICustomItemAttribute, ICustomItemPassive, ICustomItemEnchant {
+public abstract class WeaponItem implements IEquipmentItem, ICustomItemRequirement, ICustomItemSkill, ICustomItemAttribute, ICustomItemPassive {
 
     private final UseRequirement useRequirement;
 

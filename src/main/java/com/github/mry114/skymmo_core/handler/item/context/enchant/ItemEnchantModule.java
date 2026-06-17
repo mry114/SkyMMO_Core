@@ -12,8 +12,11 @@ import com.github.mry114.skymmo_core.api.item.module.processor.IItemProcessor;
 import com.github.mry114.skymmo_core.api.item.module.processor.IItemReader;
 import com.github.mry114.skymmo_core.api.item.module.processor.IItemUpdater;
 import com.github.mry114.skymmo_core.core.item.context.*;
+import com.github.mry114.skymmo_core.handler.item.context.MainModuleKeys;
 import com.github.mry114.skymmo_core.handler.pdc.converter.EnchantConvertData;
+import com.github.mry114.skymmo_core.model.item.ItemGroup;
 import com.github.mry114.skymmo_core.registry.EnchantRegistry;
+import com.github.mry114.skymmo_core.registry.ItemRegistry;
 import com.github.mry114.skymmo_core.util.MetaDataUtil;
 import com.github.mry114.skymmo_core.util.RomanNumeralConverter;
 import com.github.mry114.skymmo_core.util.pdc.PDCWrapper;
@@ -117,6 +120,9 @@ public class ItemEnchantModule implements IItemModule {
                                 .decoration(TextDecoration.BOLD, false)
                                 .decoration(TextDecoration.ITALIC, false)
                 );
+                if (customItem.getItemType().getItemGroup() == ItemGroup.ENCHANTED_BOOK) {
+                    newLore.addAll(EnchantRegistry.getById(data.getId()).getEnchantLore());
+                }
                 index++;
             }
             newLore.add(Component.empty());

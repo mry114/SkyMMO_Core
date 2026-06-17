@@ -8,6 +8,7 @@ import com.github.mry114.skymmo_core.model.enchant.EnchantTier;
 import com.github.mry114.skymmo_core.model.item.ItemGroup;
 import com.github.mry114.skymmo_core.model.status.PlayerStatus;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.jetbrains.annotations.NotNull;
 
@@ -45,7 +46,7 @@ public class ExampleEnchant extends Enchant {
     @Override
     public @NotNull List<Component> getEnchantLore() {
         return List.of(
-                Component.text("Test")
+                Component.text("Test用のエンチャントです", TextColor.color(0xC4C4C4))
         );
     }
 

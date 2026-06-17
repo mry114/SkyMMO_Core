@@ -32,6 +32,12 @@ public class EnchantRegistry {
 
             for (Class<IEnchant> clazz : classes) {
                 try {
+                    int modifiers = clazz.getModifiers();
+
+                    if (java.lang.reflect.Modifier.isAbstract(modifiers) || clazz.isAnonymousClass()) {
+                        continue;
+                    }
+
                     IEnchant enchant = clazz.getDeclaredConstructor().newInstance();
                     this.registry.put(enchant.getId(), enchant);
 

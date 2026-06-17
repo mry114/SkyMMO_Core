@@ -32,6 +32,12 @@ public class ItemRegistry {
 
             for (Class<ICustomItem> clazz : classes) {
                 try {
+                    int modifiers = clazz.getModifiers();
+
+                    if (java.lang.reflect.Modifier.isAbstract(modifiers) || clazz.isAnonymousClass()) {
+                        continue;
+                    }
+
                     ICustomItem item = clazz.getDeclaredConstructor().newInstance();
                     this.registry.put(item.getId(), item);
 

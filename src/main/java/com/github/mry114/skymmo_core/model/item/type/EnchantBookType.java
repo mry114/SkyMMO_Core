@@ -5,7 +5,8 @@ import com.github.mry114.skymmo_core.api.type.IItemType;
 import com.github.mry114.skymmo_core.model.item.ItemGroup;
 
 public enum EnchantBookType implements IItemType<EnchantBookType> {
-    ENCHANTED_BOOK
+    NORMAL_ENCHANTED_BOOK,
+    ULTIMATE_ENCHANTED_BOOK
     ;
 
     @Override

@@ -33,6 +33,12 @@ public class AttributeRegistry {
 
             for (Class<IAttribute> clazz : classes) {
                 try {
+                    int modifiers = clazz.getModifiers();
+
+                    if (java.lang.reflect.Modifier.isAbstract(modifiers) || clazz.isAnonymousClass()) {
+                        continue;
+                    }
+
                     IAttribute attribute = clazz.getDeclaredConstructor().newInstance();
                     this.registry.put(attribute.getId(), attribute);
 

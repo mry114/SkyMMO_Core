@@ -3,6 +3,7 @@ package com.github.mry114.skymmo_core.listener;
 import com.github.mry114.skymmo_core.SkyMMO_Core;
 import com.github.mry114.skymmo_core.api.item.diff.capa.ICustomItemSkill;
 import com.github.mry114.skymmo_core.content.enchant.ExampleEnchant;
+import com.github.mry114.skymmo_core.content.item.armor.ExampleArmor;
 import com.github.mry114.skymmo_core.content.item.weapon.ExampleWeapon;
 import com.github.mry114.skymmo_core.core.item.context.ItemGeneratorContext;
 import com.github.mry114.skymmo_core.core.factory.CustomItemFactory;
@@ -52,12 +53,12 @@ public class EventListener implements Listener {
                 context.put(ItemEnchantModuleKeys.ITEM_ENCHANT, List.of(
                         new EnchantConvertData(new ExampleEnchant(), 3)
                 ));
-                player.getInventory().setItem(0, new CustomItemFactory().create(new ExampleWeapon(), context));
+                player.getInventory().setItem(0, new CustomItemFactory().create(new ExampleArmor(), context));
             }
 
             case "3" -> {
                 context.put(ItemAttributeModuleKeys.ITEM_ATTRIBUTE, new ExampleAttribute());
-                player.getInventory().setItem(0, new CustomItemFactory().create(new ExampleWeapon(), context));
+                player.getInventory().setItem(0, new CustomItemFactory().create(new ExampleArmor(), context));
             }
 
             case "4" -> {
@@ -78,26 +79,6 @@ public class EventListener implements Listener {
     @EventHandler
     private void onPlayerInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
-
-        try {
-            // ItemRegistryのINSTANCEを取得
-            Object registryInstance = ItemRegistry.getInstance();
-
-            // 内部の「registry」という名前のMapフィールドを探す
-            java.lang.reflect.Field field = registryInstance.getClass().getDeclaredField("registry");
-            field.setAccessible(true); // privateでもアクセスできるようにロックを解除
-
-            // マップの中身をキャストして取得
-            java.util.Map<?, ?> map = (java.util.Map<?, ?>) field.get(registryInstance);
-
-            player.sendMessage("§b[Debug] レジストリ内の総アイテム数: " + (map != null ? map.size() : "null"));
-            if (map != null) {
-                player.sendMessage("§b[Debug] 登録されているID一覧: " + map.keySet().toString());
-            }
-        } catch (Exception e) {
-            player.sendMessage("§c[Debug] レジストリの覗き込みに失敗: " + e.getMessage());
-            e.printStackTrace();
-        }
 
         if (event.getAction() != Action.RIGHT_CLICK_AIR && event.getAction() != Action.RIGHT_CLICK_BLOCK) {
             return;

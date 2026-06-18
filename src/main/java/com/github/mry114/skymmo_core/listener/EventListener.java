@@ -44,7 +44,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class EventListener implements Listener {
-    private List<@NotNull IIgniterEvent> igniterInterfaceInheritanceClass = new ArrayList<>();
+    private final List<@NotNull IIgniterEvent> igniterInterfaceInheritanceClass;
 
     public EventListener() {
         List<IIgniterEvent> inheritance;
@@ -67,10 +67,6 @@ public class EventListener implements Listener {
                     })
                     .filter(Objects::nonNull)
                     .toList();
-        }
-
-        if (inheritance.isEmpty()) {
-            this.igniterInterfaceInheritanceClass.add(null);
         }
         this.igniterInterfaceInheritanceClass = inheritance;
     }

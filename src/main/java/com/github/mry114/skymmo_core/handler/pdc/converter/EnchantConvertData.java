@@ -2,7 +2,7 @@ package com.github.mry114.skymmo_core.handler.pdc.converter;
 
 import com.github.mry114.skymmo_core.api.enchant.IEnchant;
 import com.github.mry114.skymmo_core.api.pdc.IConvertData;
-import com.github.mry114.skymmo_core.registry.EnchantRegistry;
+import com.github.mry114.skymmo_core.register.content.EnchantRegistry;
 
 public class EnchantConvertData implements IConvertData<Integer> {
     private final int levelDigit = 3;

@@ -1,11 +1,11 @@
 package com.github.mry114.skymmo_core.handler.item.context.skill;
 
-import com.github.mry114.skymmo_core.api.item.ICustomItem;
-import com.github.mry114.skymmo_core.api.item.diff.can.IItemSkill;
-import com.github.mry114.skymmo_core.api.item.diff.capa.ICustomItemSkill;
-import com.github.mry114.skymmo_core.api.item.module.IItemModule;
-import com.github.mry114.skymmo_core.api.item.module.processor.IItemProcessor;
-import com.github.mry114.skymmo_core.api.item.module.context.IItemProcessorContext;
+import com.github.mry114.skymmo_core.api.item.content.ICustomItem;
+import com.github.mry114.skymmo_core.api.item.content.diff.can.IItemSkill;
+import com.github.mry114.skymmo_core.api.item.content.diff.capa.ICustomItemSkill;
+import com.github.mry114.skymmo_core.api.item.content.module.IItemModule;
+import com.github.mry114.skymmo_core.api.item.content.module.processor.IItemProcessor;
+import com.github.mry114.skymmo_core.api.item.content.module.context.IItemProcessorContext;
 import com.github.mry114.skymmo_core.util.MetaDataUtil;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;

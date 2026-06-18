@@ -1,7 +1,7 @@
 package com.github.mry114.skymmo_core.core.type.item;
 
-import com.github.mry114.skymmo_core.api.item.ICustomItem;
-import com.github.mry114.skymmo_core.api.item.module.IItemModule;
+import com.github.mry114.skymmo_core.api.item.content.ICustomItem;
+import com.github.mry114.skymmo_core.api.item.content.module.IItemModule;
 import com.github.mry114.skymmo_core.handler.item.context.name.ItemNameModule;
 import com.github.mry114.skymmo_core.handler.item.context.rarity.ItemRarityModule;
 import org.jetbrains.annotations.NotNull;

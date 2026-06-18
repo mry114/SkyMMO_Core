@@ -1,14 +1,16 @@
 package com.github.mry114.skymmo_core;
 
-import com.github.mry114.skymmo_core.core.player.element.ElementContainer;
+import com.github.mry114.skymmo_core.core.player.cache.ElementCache;
+import com.github.mry114.skymmo_core.core.player.cache.StatusCache;
 import com.github.mry114.skymmo_core.listener.EventListener;
-import com.github.mry114.skymmo_core.registry.AttributeRegistry;
-import com.github.mry114.skymmo_core.registry.EnchantRegistry;
-import com.github.mry114.skymmo_core.registry.ItemRegistry;
+import com.github.mry114.skymmo_core.register.content.AttributeRegistry;
+import com.github.mry114.skymmo_core.register.content.EnchantRegistry;
+import com.github.mry114.skymmo_core.register.content.ItemRegistry;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class SkyMMO_Core extends JavaPlugin {
-    public static ElementContainer elementContainer;
+    public static ElementCache elementCache;
+    public static StatusCache statusCache;
 
     private static SkyMMO_Core instance;
 
@@ -21,7 +23,8 @@ public final class SkyMMO_Core extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         getServer().getPluginManager().registerEvents(new EventListener(), this);
-        elementContainer = new ElementContainer();
+        elementCache = new ElementCache();
+        statusCache = new StatusCache();
 
         ItemRegistry.getInstance().loadAll(this);
         AttributeRegistry.getInstance().loadAll(this);

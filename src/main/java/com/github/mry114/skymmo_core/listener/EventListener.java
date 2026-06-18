@@ -1,7 +1,8 @@
 package com.github.mry114.skymmo_core.listener;
 
 import com.github.mry114.skymmo_core.SkyMMO_Core;
-import com.github.mry114.skymmo_core.api.item.diff.capa.ICustomItemSkill;
+import com.github.mry114.skymmo_core.api.item.content.diff.capa.ICustomItemSkill;
+import com.github.mry114.skymmo_core.api.system.IIgniterEvent;
 import com.github.mry114.skymmo_core.content.enchant.ExampleEnchant;
 import com.github.mry114.skymmo_core.content.item.armor.ExampleArmor;
 import com.github.mry114.skymmo_core.content.item.enchant_book.NormalEnchantBook;
@@ -9,16 +10,21 @@ import com.github.mry114.skymmo_core.content.item.enchant_book.UltimateEnchantBo
 import com.github.mry114.skymmo_core.content.item.weapon.ExampleWeapon;
 import com.github.mry114.skymmo_core.core.item.context.ItemGeneratorContext;
 import com.github.mry114.skymmo_core.core.factory.CustomItemFactory;
-import com.github.mry114.skymmo_core.core.type.item.EnchantBookItem;
+import com.github.mry114.skymmo_core.core.player.status.StatusContainer;
 import com.github.mry114.skymmo_core.handler.item.context.attribute.ItemAttributeModuleKeys;
 import com.github.mry114.skymmo_core.handler.item.context.MainModuleKeys;
 import com.github.mry114.skymmo_core.content.attribute.ExampleAttribute;
 import com.github.mry114.skymmo_core.handler.item.context.enchant.ItemEnchantModuleKeys;
 import com.github.mry114.skymmo_core.handler.pdc.converter.EnchantConvertData;
-import com.github.mry114.skymmo_core.registry.ItemRegistry;
+import com.github.mry114.skymmo_core.model.status.Status;
+import com.github.mry114.skymmo_core.register.content.ItemRegistry;
 import com.github.mry114.skymmo_core.util.pdc.PDCWrapper;
+import io.github.classgraph.ClassGraph;
+import io.github.classgraph.ScanResult;
 import io.papermc.paper.event.player.AsyncChatEvent;
+import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -27,13 +33,48 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerItemHeldEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class EventListener implements Listener {
+    private List<@NotNull IIgniterEvent> igniterInterfaceInheritanceClass = new ArrayList<>();
+
+    public EventListener() {
+        List<IIgniterEvent> inheritance;
+
+        try (ScanResult scanResult = new ClassGraph()
+                .enableAllInfo()
+                .acceptPackages("com.github.mry114.skymmo_core")
+                .scan()) {
+
+            inheritance = scanResult.getClassesImplementing(IIgniterEvent.class.getName())
+                    .filter(classInfo -> !classInfo.isAbstract())
+                    .stream()
+                    .map(classInfo -> {
+                        try {
+                            Class<?> clazz = classInfo.loadClass();
+                            return (IIgniterEvent) clazz.getDeclaredConstructor().newInstance();
+                        } catch (Exception e) {
+                            return null;
+                        }
+                    })
+                    .filter(Objects::nonNull)
+                    .toList();
+        }
+
+        if (inheritance.isEmpty()) {
+            this.igniterInterfaceInheritanceClass.add(null);
+        }
+        this.igniterInterfaceInheritanceClass = inheritance;
+    }
+
     @EventHandler
     private void onPlayerChat(AsyncChatEvent event) {
         String message = PlainTextComponentSerializer.plainText().serialize(event.message());
@@ -74,6 +115,11 @@ public class EventListener implements Listener {
             case "5" -> {
                 context.put(ItemAttributeModuleKeys.ITEM_ATTRIBUTE, new ExampleAttribute());
                 player.getInventory().setItem(0, new CustomItemFactory().create(new UltimateEnchantBook(), context));
+            }
+
+            case "6" -> {
+                StatusContainer statusContainer = SkyMMO_Core.statusCache.getPlayerStatus(player.getUniqueId());
+                player.sendMessage(Component.text(statusContainer.get(Status.DAMAGE)));
             }
         }
     }
@@ -136,12 +182,23 @@ public class EventListener implements Listener {
     @EventHandler
     public void onPlayerJoinEvent(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        SkyMMO_Core.elementContainer.createPlayer(player.getUniqueId());
+        SkyMMO_Core.elementCache.createPlayer(player.getUniqueId());
     }
 
     @EventHandler
     public void onPlayerLeave(PlayerQuitEvent event) {
         Player player = event.getPlayer();
-        SkyMMO_Core.elementContainer.removePlayer(player.getUniqueId());
+        SkyMMO_Core.elementCache.removePlayer(player.getUniqueId());
+    }
+
+    @EventHandler
+    public void onPlayerItemHeld(PlayerItemHeldEvent event) {
+        Bukkit.getScheduler().runTask(SkyMMO_Core.getPlugin(SkyMMO_Core.class), () -> {
+            if (!event.getPlayer().isOnline()) return;
+
+            for (IIgniterEvent igniterEvent : igniterInterfaceInheritanceClass) {
+                igniterEvent.playerItemHeldEvent(event);
+            }
+        });
     }
 }

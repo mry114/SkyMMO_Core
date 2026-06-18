@@ -1,18 +1,18 @@
 package com.github.mry114.skymmo_core.handler.item.context.name;
 
-import com.github.mry114.skymmo_core.api.item.ICustomItem;
-import com.github.mry114.skymmo_core.api.item.module.IItemModule;
-import com.github.mry114.skymmo_core.api.item.module.context.IItemCalculatorContext;
-import com.github.mry114.skymmo_core.api.item.module.context.IItemProcessorContext;
-import com.github.mry114.skymmo_core.api.item.module.context.IItemReaderContext;
-import com.github.mry114.skymmo_core.api.item.module.processor.IItemCalculator;
-import com.github.mry114.skymmo_core.api.item.module.processor.IItemProcessor;
-import com.github.mry114.skymmo_core.api.item.module.processor.IItemReader;
+import com.github.mry114.skymmo_core.api.item.content.ICustomItem;
+import com.github.mry114.skymmo_core.api.item.content.module.IItemModule;
+import com.github.mry114.skymmo_core.api.item.content.module.context.IItemCalculatorContext;
+import com.github.mry114.skymmo_core.api.item.content.module.context.IItemProcessorContext;
+import com.github.mry114.skymmo_core.api.item.content.module.context.IItemReaderContext;
+import com.github.mry114.skymmo_core.api.item.content.module.processor.IItemCalculator;
+import com.github.mry114.skymmo_core.api.item.content.module.processor.IItemProcessor;
+import com.github.mry114.skymmo_core.api.item.content.module.processor.IItemReader;
 import com.github.mry114.skymmo_core.core.item.context.*;
 import com.github.mry114.skymmo_core.handler.item.context.attribute.ItemAttributeModuleKeys;
 import com.github.mry114.skymmo_core.handler.item.context.MainModuleKeys;
 import com.github.mry114.skymmo_core.handler.item.context.rarity.ItemRarityModuleKeys;
-import com.github.mry114.skymmo_core.registry.ItemRegistry;
+import com.github.mry114.skymmo_core.register.content.ItemRegistry;
 import com.github.mry114.skymmo_core.util.MetaDataUtil;
 import com.github.mry114.skymmo_core.util.pdc.PDCWrapper;
 import net.kyori.adventure.text.Component;

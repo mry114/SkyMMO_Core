@@ -1,7 +1,7 @@
 package com.github.mry114.skymmo_core.api.attribute;
 
 import com.github.mry114.skymmo_core.api.type.IAttributeType;
-import com.github.mry114.skymmo_core.core.status.StatusContainer;
+import com.github.mry114.skymmo_core.core.player.status.StatusContainer;
 import net.kyori.adventure.text.Component;
 
 public interface IAttribute {

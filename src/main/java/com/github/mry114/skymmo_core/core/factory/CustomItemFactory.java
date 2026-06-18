@@ -1,12 +1,12 @@
 package com.github.mry114.skymmo_core.core.factory;
 
-import com.github.mry114.skymmo_core.api.item.ICustomItem;
-import com.github.mry114.skymmo_core.api.item.module.IItemModule;
+import com.github.mry114.skymmo_core.api.item.content.ICustomItem;
+import com.github.mry114.skymmo_core.api.item.content.module.IItemModule;
 import com.github.mry114.skymmo_core.core.item.context.ItemContext;
 import com.github.mry114.skymmo_core.core.item.context.ItemGeneratorContext;
 import com.github.mry114.skymmo_core.core.item.context.ItemUpdaterContext;
 import com.github.mry114.skymmo_core.handler.item.context.MainModuleKeys;
-import com.github.mry114.skymmo_core.registry.ItemRegistry;
+import com.github.mry114.skymmo_core.register.content.ItemRegistry;
 import com.github.mry114.skymmo_core.util.pdc.PDCWrapper;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;

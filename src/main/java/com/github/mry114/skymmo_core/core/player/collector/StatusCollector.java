@@ -38,7 +38,6 @@ public class StatusCollector {
         if (modules.isEmpty()) {
             return;
         }
-        player.sendMessage("ステータス取得動作確認！");
         UUID uuid = player.getUniqueId();
         StatusCache statusCache = SkyMMO_Core.statusCache;
         statusCache.removeStatus(uuid);

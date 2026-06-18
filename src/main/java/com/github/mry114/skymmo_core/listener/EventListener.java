@@ -193,12 +193,8 @@ public class EventListener implements Listener {
 
     @EventHandler
     public void onPlayerItemHeld(PlayerItemHeldEvent event) {
-        Bukkit.getScheduler().runTask(SkyMMO_Core.getPlugin(SkyMMO_Core.class), () -> {
-            if (!event.getPlayer().isOnline()) return;
-
-            for (IIgniterEvent igniterEvent : igniterInterfaceInheritanceClass) {
-                igniterEvent.playerItemHeldEvent(event);
-            }
-        });
+        for (IIgniterEvent igniterEvent : igniterInterfaceInheritanceClass) {
+            igniterEvent.playerItemHeldEvent(event);
+        }
     }
 }

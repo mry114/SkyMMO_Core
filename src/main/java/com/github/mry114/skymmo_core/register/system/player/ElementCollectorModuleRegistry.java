@@ -12,7 +12,7 @@ import java.util.Objects;
 public class ElementCollectorModuleRegistry implements IModuleRegistry<IElementCollectorModule> {
     private final List<IElementCollectorModule> modules;
 
-    ElementCollectorModuleRegistry() {
+    public ElementCollectorModuleRegistry() {
         List<IElementCollectorModule> modules;
 
         try (ScanResult scanResult = new ClassGraph()

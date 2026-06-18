@@ -1,6 +1,5 @@
 package com.github.mry114.skymmo_core.register.system.player;
 
-import com.github.mry114.skymmo_core.api.player.data.IElementCollectorModule;
 import com.github.mry114.skymmo_core.api.player.data.IStatusCollectorModule;
 import com.github.mry114.skymmo_core.api.registry.IModuleRegistry;
 import io.github.classgraph.ClassGraph;
@@ -12,7 +11,7 @@ import java.util.Objects;
 public class StatusCollectorModuleRegistry implements IModuleRegistry<IStatusCollectorModule> {
     private final List<IStatusCollectorModule> modules;
 
-    StatusCollectorModuleRegistry() {
+    public StatusCollectorModuleRegistry() {
         List<IStatusCollectorModule> modules;
 
         try (ScanResult scanResult = new ClassGraph()

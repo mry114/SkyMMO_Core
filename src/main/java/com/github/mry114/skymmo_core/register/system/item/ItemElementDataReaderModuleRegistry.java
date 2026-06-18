@@ -11,7 +11,7 @@ import java.util.Objects;
 public class ItemElementDataReaderModuleRegistry implements IModuleRegistry<IItemElementDataReaderModule> {
     private final List<IItemElementDataReaderModule> modules;
 
-    ItemElementDataReaderModuleRegistry() {
+    public ItemElementDataReaderModuleRegistry() {
         List<IItemElementDataReaderModule> modules;
 
         try (ScanResult scanResult = new ClassGraph()

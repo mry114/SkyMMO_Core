@@ -12,7 +12,7 @@ import java.util.Objects;
 public class ItemStatusReaderModuleRegistry implements IModuleRegistry<IItemStatusReaderModule> {
     private  final List<IItemStatusReaderModule> modules;
 
-    ItemStatusReaderModuleRegistry() {
+    public ItemStatusReaderModuleRegistry() {
         List<IItemStatusReaderModule> modules;
 
         try (ScanResult scanResult = new ClassGraph()

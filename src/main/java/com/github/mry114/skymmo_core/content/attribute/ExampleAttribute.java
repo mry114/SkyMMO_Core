@@ -2,7 +2,7 @@ package com.github.mry114.skymmo_core.content.attribute;
 
 import com.github.mry114.skymmo_core.api.type.IAttributeType;
 import com.github.mry114.skymmo_core.model.status.Status;
-import com.github.mry114.skymmo_core.core.type.attribute.Attribute;
+import com.github.mry114.skymmo_core.core.type.Attribute;
 import com.github.mry114.skymmo_core.core.player.status.StatusContainer;
 import com.github.mry114.skymmo_core.model.attribute.AttributeType;
 import net.kyori.adventure.text.Component;

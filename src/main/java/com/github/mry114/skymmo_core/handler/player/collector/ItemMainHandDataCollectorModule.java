@@ -1,22 +1,31 @@
 package com.github.mry114.skymmo_core.handler.player.collector;
 
 import com.github.mry114.skymmo_core.SkyMMO_Core;
+import com.github.mry114.skymmo_core.api.player.data.IElementCollectorModule;
 import com.github.mry114.skymmo_core.api.player.data.IStatusCollectorModule;
 import com.github.mry114.skymmo_core.api.system.IIgniterEvent;
+import com.github.mry114.skymmo_core.core.item.reader.ItemElementDataReader;
 import com.github.mry114.skymmo_core.core.item.reader.ItemStatusReader;
 import com.github.mry114.skymmo_core.core.player.collector.StatusCollector;
+import com.github.mry114.skymmo_core.core.player.element.ElementData;
 import com.github.mry114.skymmo_core.core.player.status.StatusContainer;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerItemHeldEvent;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.UUID;
 
-public class ItemMainHandDataCollectorModule implements IStatusCollectorModule {
+public class ItemMainHandDataCollectorModule implements IStatusCollectorModule, IElementCollectorModule {
     @Override
     public @Nullable StatusContainer getStatusData(Player player) {
         return ItemStatusReader.read(player.getInventory().getItemInMainHand());
+    }
+
+    @Override
+    public @Nullable List<ElementData> getElementData(Player player) {
+        return ItemElementDataReader.read(player.getInventory().getItemInMainHand());
     }
 
     @Override

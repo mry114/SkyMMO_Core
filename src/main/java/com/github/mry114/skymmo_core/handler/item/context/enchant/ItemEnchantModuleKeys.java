@@ -1,7 +1,7 @@
 package com.github.mry114.skymmo_core.handler.item.context.enchant;
 
 import com.github.mry114.skymmo_core.SkyMMO_Core;
-import com.github.mry114.skymmo_core.core.item.context.key.ItemContextKey;
+import com.github.mry114.skymmo_core.core.item.context.ItemContextKey;
 import com.github.mry114.skymmo_core.core.pdc.PDCKey;
 import com.github.mry114.skymmo_core.handler.pdc.converter.EnchantConvertData;
 import com.github.mry114.skymmo_core.handler.pdc.type.EnchantDataType;

@@ -1,12 +1,12 @@
 package com.github.mry114.skymmo_core.core.type.item;
 
-import com.github.mry114.skymmo_core.api.item.content.diff.can.IItemSkill;
-import com.github.mry114.skymmo_core.api.item.content.diff.can.IUseRequirement;
-import com.github.mry114.skymmo_core.api.item.content.diff.can.ItemSkill;
-import com.github.mry114.skymmo_core.api.item.content.diff.can.UseRequirement;
-import com.github.mry114.skymmo_core.api.item.content.diff.capa.*;
-import com.github.mry114.skymmo_core.api.item.content.diff.equipment.IEquipmentItem;
-import com.github.mry114.skymmo_core.api.item.content.module.IItemModule;
+import com.github.mry114.skymmo_core.api.item.content.can.IItemSkill;
+import com.github.mry114.skymmo_core.api.item.content.can.IUseRequirement;
+import com.github.mry114.skymmo_core.core.type.ItemSkill;
+import com.github.mry114.skymmo_core.core.type.UseRequirement;
+import com.github.mry114.skymmo_core.api.item.content.capa.*;
+import com.github.mry114.skymmo_core.api.item.content.equipment.IEquipmentItem;
+import com.github.mry114.skymmo_core.api.item.module.IItemModule;
 import com.github.mry114.skymmo_core.api.type.IAttributeType;
 import com.github.mry114.skymmo_core.handler.item.context.enchant.ItemEnchantModule;
 import com.github.mry114.skymmo_core.model.attribute.AttributeType;

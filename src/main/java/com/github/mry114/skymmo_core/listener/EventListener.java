@@ -1,20 +1,24 @@
 package com.github.mry114.skymmo_core.listener;
 
 import com.github.mry114.skymmo_core.SkyMMO_Core;
-import com.github.mry114.skymmo_core.api.item.content.diff.capa.ICustomItemSkill;
+import com.github.mry114.skymmo_core.api.item.content.capa.ICustomItemSkill;
 import com.github.mry114.skymmo_core.api.system.IIgniterEvent;
 import com.github.mry114.skymmo_core.content.enchant.ExampleEnchant;
 import com.github.mry114.skymmo_core.content.item.armor.ExampleArmor;
 import com.github.mry114.skymmo_core.content.item.enchant_book.NormalEnchantBook;
 import com.github.mry114.skymmo_core.content.item.enchant_book.UltimateEnchantBook;
 import com.github.mry114.skymmo_core.content.item.weapon.ExampleWeapon;
+import com.github.mry114.skymmo_core.content.mob.StandardDummy;
+import com.github.mry114.skymmo_core.core.executor.PlayerAttack;
+import com.github.mry114.skymmo_core.core.factory.CustomMobFactory;
 import com.github.mry114.skymmo_core.core.item.context.ItemGeneratorContext;
 import com.github.mry114.skymmo_core.core.factory.CustomItemFactory;
 import com.github.mry114.skymmo_core.core.player.status.StatusContainer;
 import com.github.mry114.skymmo_core.handler.item.context.attribute.ItemAttributeModuleKeys;
-import com.github.mry114.skymmo_core.handler.item.context.MainModuleKeys;
+import com.github.mry114.skymmo_core.handler.item.context.ItemMainModuleKeys;
 import com.github.mry114.skymmo_core.content.attribute.ExampleAttribute;
 import com.github.mry114.skymmo_core.handler.item.context.enchant.ItemEnchantModuleKeys;
+import com.github.mry114.skymmo_core.handler.mob.MobMainModuleKeys;
 import com.github.mry114.skymmo_core.handler.pdc.converter.EnchantConvertData;
 import com.github.mry114.skymmo_core.model.status.Status;
 import com.github.mry114.skymmo_core.register.content.ItemRegistry;
@@ -25,6 +29,7 @@ import io.papermc.paper.event.player.AsyncChatEvent;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -32,16 +37,18 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemHeldEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 public class EventListener implements Listener {
     private final List<@NotNull IIgniterEvent> igniterInterfaceInheritanceClass;
@@ -75,6 +82,8 @@ public class EventListener implements Listener {
     private void onPlayerChat(AsyncChatEvent event) {
         String message = PlainTextComponentSerializer.plainText().serialize(event.message());
         Player player = event.getPlayer();
+        CustomMobFactory mobFactory = new CustomMobFactory();
+        Plugin plugin = SkyMMO_Core.getInstance();
 
         ItemGeneratorContext context = new ItemGeneratorContext();
 
@@ -117,6 +126,11 @@ public class EventListener implements Listener {
                 StatusContainer statusContainer = SkyMMO_Core.statusCache.getPlayerStatus(player.getUniqueId());
                 player.sendMessage(Component.text(statusContainer.get(Status.DAMAGE)));
             }
+
+            case "7" -> {
+                Location location = player.getLocation();
+                Bukkit.getScheduler().runTask(plugin, () -> mobFactory.spawn(new StandardDummy(), location));
+            }
         }
     }
 
@@ -133,7 +147,7 @@ public class EventListener implements Listener {
             return;
         }
 
-        Integer id = new PDCWrapper(meta).get(MainModuleKeys.PDC_ITEM_ID);
+        Integer id = new PDCWrapper(meta).get(ItemMainModuleKeys.PDC_ITEM_ID);
         if (id == null) {
             return;
         }
@@ -159,8 +173,11 @@ public class EventListener implements Listener {
 
             // 殴られた対象が生き物（モンスターなど）であるか判定
             if (damaged instanceof LivingEntity && !(damaged instanceof Player)) {
-                double damage = event.getFinalDamage();
-
+                PDCWrapper pdc = new PDCWrapper(damaged);
+                if (pdc.get(MobMainModuleKeys.PDC_MOB_ID) != null) {
+                    PlayerAttack playerAttack = new PlayerAttack(player, damaged);
+                    playerAttack.execute();
+                }
             }
         }
 
@@ -178,19 +195,36 @@ public class EventListener implements Listener {
     @EventHandler
     public void onPlayerJoinEvent(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        SkyMMO_Core.elementCache.createPlayer(player.getUniqueId());
+        UUID uuid = player.getUniqueId();
+        SkyMMO_Core.elementCache.createPlayer(uuid);
+        SkyMMO_Core.statusCache.createPlayer(uuid);
     }
 
     @EventHandler
     public void onPlayerLeave(PlayerQuitEvent event) {
         Player player = event.getPlayer();
-        SkyMMO_Core.elementCache.removePlayer(player.getUniqueId());
+        UUID uuid = player.getUniqueId();
+        SkyMMO_Core.elementCache.removePlayer(uuid);
+        SkyMMO_Core.statusCache.removePlayer(uuid);
     }
 
     @EventHandler
     public void onPlayerItemHeld(PlayerItemHeldEvent event) {
         for (IIgniterEvent igniterEvent : igniterInterfaceInheritanceClass) {
             igniterEvent.playerItemHeldEvent(event);
+        }
+    }
+
+    @EventHandler
+    public void onEntityDamage(EntityDamageEvent event) {
+        event.setDamage(0);
+        PDCWrapper pdc = new PDCWrapper(event.getEntity());
+        if (pdc.get(MobMainModuleKeys.PDC_MOB_ID) != null) {
+            if (!(event.getEntity() instanceof Player)) {
+                for (IIgniterEvent igniterEvent : igniterInterfaceInheritanceClass) {
+                    igniterEvent.MobDamageEvent(event);
+                }
+            }
         }
     }
 }

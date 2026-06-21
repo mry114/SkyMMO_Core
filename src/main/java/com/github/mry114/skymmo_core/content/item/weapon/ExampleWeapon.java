@@ -4,8 +4,8 @@ import com.github.mry114.skymmo_core.api.type.IItemType;
 import com.github.mry114.skymmo_core.core.player.element.ElementData;
 import com.github.mry114.skymmo_core.model.item.Rarity;
 import com.github.mry114.skymmo_core.model.status.Status;
-import com.github.mry114.skymmo_core.api.item.content.diff.can.ItemSkill;
-import com.github.mry114.skymmo_core.api.item.content.diff.can.UseRequirement;
+import com.github.mry114.skymmo_core.core.type.ItemSkill;
+import com.github.mry114.skymmo_core.core.type.UseRequirement;
 import com.github.mry114.skymmo_core.core.type.item.WeaponItem;
 import com.github.mry114.skymmo_core.model.item.type.WeaponType;
 import com.github.mry114.skymmo_core.core.player.status.StatusContainer;
@@ -13,6 +13,8 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.util.Vector;
@@ -76,6 +78,12 @@ public class ExampleWeapon extends WeaponItem {
 
                         player.teleport(tpLocation);
                         tpLocation.getWorld().createExplosion(tpLocation, 0.0F);
+
+                        double radius = 3.0; // 効果範囲（お好みで調整）
+                        for (Entity entity : tpLocation.getWorld().getNearbyEntities(tpLocation, radius, radius, radius)) {
+                            if (entity instanceof LivingEntity && entity != player) {
+                            }
+                        }
                     }
 
                     @Override

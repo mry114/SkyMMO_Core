@@ -1,7 +1,5 @@
 package com.github.mry114.skymmo_core.core.item.context;
 
-import com.github.mry114.skymmo_core.core.item.context.key.ItemContextKey;
-
 import java.util.HashMap;
 import java.util.Map;
 

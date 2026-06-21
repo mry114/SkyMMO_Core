@@ -1,6 +1,6 @@
 package com.github.mry114.skymmo_core.handler.item.context.equipment.base_status;
 
-import com.github.mry114.skymmo_core.core.item.context.key.ItemContextKey;
+import com.github.mry114.skymmo_core.core.item.context.ItemContextKey;
 import com.github.mry114.skymmo_core.core.player.status.StatusContainer;
 
 public class ItemBaseStatusModuleKeys {

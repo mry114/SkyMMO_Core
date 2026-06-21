@@ -1,16 +1,16 @@
 package com.github.mry114.skymmo_core.handler.item.context.equipment.base_status;
 
 import com.github.mry114.skymmo_core.api.item.content.ICustomItem;
-import com.github.mry114.skymmo_core.api.item.content.diff.equipment.IEquipmentItem;
-import com.github.mry114.skymmo_core.api.item.content.module.IItemModule;
-import com.github.mry114.skymmo_core.api.item.content.module.processor.IItemCalculator;
-import com.github.mry114.skymmo_core.api.item.content.module.processor.IItemProcessor;
-import com.github.mry114.skymmo_core.api.item.content.module.processor.IItemReader;
-import com.github.mry114.skymmo_core.api.item.content.module.context.IItemCalculatorContext;
-import com.github.mry114.skymmo_core.api.item.content.module.context.IItemProcessorContext;
-import com.github.mry114.skymmo_core.api.item.content.module.context.IItemReaderContext;
+import com.github.mry114.skymmo_core.api.item.content.equipment.IEquipmentItem;
+import com.github.mry114.skymmo_core.api.item.module.IItemModule;
+import com.github.mry114.skymmo_core.api.item.module.processor.IItemCalculator;
+import com.github.mry114.skymmo_core.api.item.module.processor.IItemProcessor;
+import com.github.mry114.skymmo_core.api.item.module.processor.IItemReader;
+import com.github.mry114.skymmo_core.api.item.module.context.IItemCalculatorContext;
+import com.github.mry114.skymmo_core.api.item.module.context.IItemProcessorContext;
+import com.github.mry114.skymmo_core.api.item.module.context.IItemReaderContext;
 import com.github.mry114.skymmo_core.core.item.context.ItemGeneratorContext;
-import com.github.mry114.skymmo_core.handler.item.context.MainModuleKeys;
+import com.github.mry114.skymmo_core.handler.item.context.ItemMainModuleKeys;
 import com.github.mry114.skymmo_core.model.status.Status;
 import com.github.mry114.skymmo_core.register.content.ItemRegistry;
 import com.github.mry114.skymmo_core.util.MetaDataUtil;
@@ -89,7 +89,7 @@ public class ItemBaseStatusModule implements IItemModule {
         public void reader(ICustomItem customItem, ItemStack itemStack, IItemReaderContext context) {
             PDCWrapper pdc = new PDCWrapper(itemStack.getItemMeta());
 
-            if (ItemRegistry.getById(pdc.get(MainModuleKeys.PDC_ITEM_ID)) instanceof IEquipmentItem equipment) {
+            if (ItemRegistry.getById(pdc.get(ItemMainModuleKeys.PDC_ITEM_ID)) instanceof IEquipmentItem equipment) {
                 context.put(ItemBaseStatusModuleKeys.ITEM_BASE_STATUS, equipment.getBaseStatus());
             }
         }

@@ -1,7 +1,6 @@
 package com.github.mry114.skymmo_core.core.item.context;
 
-import com.github.mry114.skymmo_core.api.item.content.module.context.*;
-import com.github.mry114.skymmo_core.core.item.context.key.ItemContextKey;
+import com.github.mry114.skymmo_core.api.item.module.context.*;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;

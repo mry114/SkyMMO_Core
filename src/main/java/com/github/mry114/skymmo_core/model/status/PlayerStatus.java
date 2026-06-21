@@ -3,7 +3,7 @@ package com.github.mry114.skymmo_core.model.status;
 import org.jetbrains.annotations.NotNull;
 
 public enum PlayerStatus {
-    ATTACK("Attack Damage", false),
+    DAMAGE("Damage Damage", false),
     DEFENSE("Defense", false),
     HP("HP", false),
     MP("MP", false),

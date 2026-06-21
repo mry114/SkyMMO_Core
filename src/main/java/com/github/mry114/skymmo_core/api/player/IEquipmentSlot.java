@@ -1,6 +1,6 @@
 package com.github.mry114.skymmo_core.api.player;
 
-import com.github.mry114.skymmo_core.api.item.content.diff.equipment.IEquipmentItem;
+import com.github.mry114.skymmo_core.api.item.content.equipment.IEquipmentItem;
 import org.bukkit.entity.Player;
 
 public interface IEquipmentSlot {

@@ -1,4 +1,3 @@
-//使用しない可能性あり
 package com.github.mry114.skymmo_core.core.player.status;
 
 import com.github.mry114.skymmo_core.model.status.PlayerStatus;
@@ -8,7 +7,6 @@ import java.util.EnumMap;
 import java.util.Map;
 
 public record PlayerStatusContainer(Map<PlayerStatus, Double> stats) {
-    /*
     public static final PlayerStatusContainer EMPTY = new PlayerStatusContainer(Map.of());
 
     public PlayerStatusContainer {
@@ -45,5 +43,4 @@ public record PlayerStatusContainer(Map<PlayerStatus, Double> stats) {
             return new PlayerStatusContainer(tempStats);
         }
     }
-    */
 }

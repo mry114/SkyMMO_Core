@@ -1,6 +1,6 @@
 package com.github.mry114.skymmo_core.handler.item.context.name;
 
-import com.github.mry114.skymmo_core.core.item.context.key.ItemContextKey;
+import com.github.mry114.skymmo_core.core.item.context.ItemContextKey;
 import net.kyori.adventure.text.Component;
 
 public class ItemNameModuleKeys {

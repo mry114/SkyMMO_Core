@@ -1,6 +1,5 @@
 package com.github.mry114.skymmo_core;
 
-import com.github.mry114.skymmo_core.api.registry.IModuleRegistry;
 import com.github.mry114.skymmo_core.core.player.cache.ElementCache;
 import com.github.mry114.skymmo_core.core.player.cache.StatusCache;
 import com.github.mry114.skymmo_core.listener.EventListener;
@@ -8,9 +7,8 @@ import com.github.mry114.skymmo_core.register.ModuleRegistry;
 import com.github.mry114.skymmo_core.register.content.AttributeRegistry;
 import com.github.mry114.skymmo_core.register.content.EnchantRegistry;
 import com.github.mry114.skymmo_core.register.content.ItemRegistry;
+import com.github.mry114.skymmo_core.register.content.MobRegistry;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.List;
 
 public final class SkyMMO_Core extends JavaPlugin {
     public static ElementCache elementCache;
@@ -37,6 +35,8 @@ public final class SkyMMO_Core extends JavaPlugin {
         ItemRegistry.getInstance().loadAll(this);
         AttributeRegistry.getInstance().loadAll(this);
         EnchantRegistry.getInstance().loadAll(this);
+
+        MobRegistry.getInstance().loadAll(this);
 
         getLogger().info("The RPG plugin has started successfully, and all data have been automatically loaded!");
     }

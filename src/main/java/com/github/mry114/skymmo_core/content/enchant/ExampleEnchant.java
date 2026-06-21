@@ -3,7 +3,7 @@ package com.github.mry114.skymmo_core.content.enchant;
 import com.github.mry114.skymmo_core.api.type.IItemType;
 import com.github.mry114.skymmo_core.core.player.element.ElementData;
 import com.github.mry114.skymmo_core.core.player.modify.StatusModify;
-import com.github.mry114.skymmo_core.core.type.enchant.Enchant;
+import com.github.mry114.skymmo_core.core.type.Enchant;
 import com.github.mry114.skymmo_core.model.enchant.EnchantTier;
 import com.github.mry114.skymmo_core.model.item.ItemGroup;
 import com.github.mry114.skymmo_core.model.status.PlayerStatus;
@@ -51,7 +51,7 @@ public class ExampleEnchant extends Enchant {
                     @Override
                     public List<StatusModify> getStatusModify() {
                         return List.of(
-                                new StatusModify(Operator.ADDITION, PlayerStatus.ATTACK, 30.0 * level)
+                                new StatusModify(Operator.ADDITION, PlayerStatus.DAMAGE, 30.0 * level)
                         );
                     }
                 }
